@@ -2,7 +2,7 @@
 
 ## Visão da Arquitetura
 
-![Visão da Arquitetura](Resources/docs/Vis%E3o%20da%20Arquitetura.png)
+![Visão da Arquitetura](Resources/docs/Visão%20da%20Aqruitetura.png)
 
 ## 1 - Casos de Uso
 
