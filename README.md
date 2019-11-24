@@ -1,14 +1,14 @@
 # Use Case Driven Design
 
-## Vis„o da Arquitetura
+## Vis√£o da Arquitetura
 
-![Vis„o da Arquitetura](Resources/docs/Vis„o da Arquitetura.png)
+![Vis√£o da Arquitetura]("Resources/docs/Vis√£o da Arquitetura.png")
 
 ## 1 - Casos de Uso
 
-![1 - Casos de Uso](Resources/docs/1 - Casos de Uso.png)
+![1 - Casos de Uso]("Resources/docs/1 - Casos de Uso.png")
 
-## Calcula Taxa de MarcaÁ„o
+## Calcula Taxa de Marca√ß√£o
 
-![Calcula Taxa de MarcaÁ„o](Resources/docs/Calcula Taxa de MarcaÁ„o.png)
+![Calcula Taxa de Marca√ß√£o]("Resources/docs/Calcula Taxa de Marca√ß√£o.png")
 
