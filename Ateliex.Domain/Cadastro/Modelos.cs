@@ -11,4 +11,9 @@
 
         public string Nome { get; }
     }
+
+    internal interface IRepositorioDeModelos
+    {
+        Modelo ObtemModelo(CodigoDeModelo codigo);
+    }
 }

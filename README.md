@@ -21,5 +21,3 @@
 
 # TODO
 - Interface de aplicação uniforme com GET e POST usando MVC padrão.
-- Adicionar Projeto EntityFrameworkCore.
-- Adicionar Projeto Data.SqlClient.

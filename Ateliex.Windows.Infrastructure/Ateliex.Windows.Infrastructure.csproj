@@ -6,14 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ateliex.ApplicationModel\Ateliex.Application.Core.csproj" />
-    <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
+    <ProjectReference Include="..\Ateliex.Application.Core\Ateliex.Application.Core.csproj" />
+    <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
+    <ProjectReference Include="..\Ateliex.Data.SqlClient\Ateliex.Data.SqlClient.csproj" />
+    <ProjectReference Include="..\Ateliex.EntityFrameworkCore\Ateliex.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Cadastro\" />
-    <Folder Include="Decisoes\" />
   </ItemGroup>
 
 </Project>
