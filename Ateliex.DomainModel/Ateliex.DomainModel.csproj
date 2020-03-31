@@ -6,9 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ateliex.BusinessModel\Ateliex.BusinessModel.csproj">
-      <Aliases>business</Aliases>
-    </ProjectReference>
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
 

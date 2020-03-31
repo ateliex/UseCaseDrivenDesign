@@ -1,5 +1,4 @@
-﻿
-namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
+﻿namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
 {
     public interface ICadastroDeModelos
     {

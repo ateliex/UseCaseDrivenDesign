@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ateliex.ApplicationModel\Ateliex.ApplicationModel.csproj" />
-    <ProjectReference Include="..\Ateliex.BusinessModel\Ateliex.BusinessModel.csproj" />
     <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>

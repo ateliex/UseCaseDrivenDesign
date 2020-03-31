@@ -15,3 +15,4 @@
 # Observações
 - Depois da falha na implementação de cadastro de modelos na primeira tentativa.
 - Remoção do aliases uc.
+- Remoção do business model.

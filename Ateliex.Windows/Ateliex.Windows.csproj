@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ateliex.BusinessModel\Ateliex.BusinessModel.csproj" />
     <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
     <ProjectReference Include="..\Ateliex.Windows.Infrastructure\Ateliex.Windows.Infrastructure.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
