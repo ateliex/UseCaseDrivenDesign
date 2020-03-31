@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Ateliex.Web-0A7F7027-04C6-4CED-A848-940702C06AC0</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ateliex.ApplicationModel\Ateliex.ApplicationModel.csproj" />
+    <ProjectReference Include="..\Ateliex.DomainModel\Ateliex.DomainModel.csproj" />
+    <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
+    <ProjectReference Include="..\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>

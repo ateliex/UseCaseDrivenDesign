@@ -16,3 +16,10 @@
 - Depois da falha na implementação de cadastro de modelos na primeira tentativa.
 - Remoção do aliases uc.
 - Remoção do business model.
+- Adição da web.
+- Todas as camadas são modularizadas pelos conceitos e não pelo viés técnico.
+
+# TODO
+- Interface de aplicação uniforme com GET e POST usando MVC padrão.
+- Adicionar Projeto EntityFrameworkCore.
+- Adicionar Projeto Data.SqlClient.
