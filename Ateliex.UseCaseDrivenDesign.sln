@@ -22,13 +22,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Windows", "Ateliex.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Extensions", "System.Extensions\System.Extensions.csproj", "{1104E006-FCB3-4A00-87FE-6C02F735FBF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.UseCaseModel", "Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj", "{2ECB3ED8-E84A-4D77-9E2D-E5F09FB7714F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application", "Ateliex.Application\Ateliex.Application.csproj", "{2ECB3ED8-E84A-4D77-9E2D-E5F09FB7714F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Windows.Infrastructure", "Ateliex.Windows.Infrastructure\Ateliex.Windows.Infrastructure.csproj", "{31BABC55-EE36-4B40-998A-B396309D918F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.ApplicationModel", "Ateliex.ApplicationModel\Ateliex.ApplicationModel.csproj", "{E8E37B2E-609A-4750-930D-3020B1F8E343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application.Core", "Ateliex.Application.Core\Ateliex.Application.Core.csproj", "{E8E37B2E-609A-4750-930D-3020B1F8E343}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.DomainModel", "Ateliex.DomainModel\Ateliex.DomainModel.csproj", "{6C891D7C-F087-4EAB-A466-E4764A6419D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Domain", "Ateliex.Domain\Ateliex.Domain.csproj", "{6C891D7C-F087-4EAB-A466-E4764A6419D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Services", "Data Services", "{00ED9475-BD87-4B78-B26E-B1DC855DE5D6}"
 EndProject
@@ -36,9 +36,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration Services", "Int
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ateliex.Web", "Ateliex.Web\Ateliex.Web.csproj", "{C19D76E5-8674-44EA-B16E-28B1CC4E2726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web", "Ateliex.Web\Ateliex.Web.csproj", "{C19D76E5-8674-44EA-B16E-28B1CC4E2726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ateliex.Web.Infrastructure", "Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj", "{95A12CAB-DE01-48E6-B073-5386F31CDD11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web.Infrastructure", "Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj", "{95A12CAB-DE01-48E6-B073-5386F31CDD11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

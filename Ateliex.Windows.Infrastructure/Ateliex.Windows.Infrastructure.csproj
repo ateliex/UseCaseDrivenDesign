@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ateliex.ApplicationModel\Ateliex.ApplicationModel.csproj" />
+    <ProjectReference Include="..\Ateliex.ApplicationModel\Ateliex.Application.Core.csproj" />
     <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
