@@ -1,16 +1,17 @@
-﻿namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
+﻿
+namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
 {
-    public interface CadastroDeModelos
+    public interface ICadastroDeModelos
     {
         RespostaDeCadastroDeModelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao);
     }
 
-    public interface SolicitacaoDeCadastroDeModelo
+    public class SolicitacaoDeCadastroDeModelo
     {
-        string Nome { get; }
+        public string Nome { get; }
     }
 
-    public interface RespostaDeCadastroDeModelo
+    public class RespostaDeCadastroDeModelo
     {
         CodigoDeModelo CodigoCadastrado { get; }
     }

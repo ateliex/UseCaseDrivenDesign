@@ -11,7 +11,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Ateliex.DomainModel\Ateliex.DomainModel.csproj" />
     <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj">
-      <Aliases>uc</Aliases>
+      <Aliases></Aliases>
     </ProjectReference>
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>

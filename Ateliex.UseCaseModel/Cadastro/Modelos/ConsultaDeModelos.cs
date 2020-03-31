@@ -1,6 +1,6 @@
 ﻿namespace Ateliex.Cadastro.Modelos.ConsultaDeModelos
 {
-    public interface ConsultaDeModelos
+    public interface IConsultaDeModelos
     {
         Modelo[] ConsultaModelos();
     }

@@ -13,4 +13,5 @@
 ![Calcula Taxa de Marcação](Resources/docs/Calcula%20Taxa%20de%20Marcação.png)
 
 # Observações
-- Falha na implementação de cadastro de modelos.
+- Depois da falha na implementação de cadastro de modelos na primeira tentativa.
+- Remoção do aliases uc.
