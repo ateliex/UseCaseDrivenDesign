@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Ateliex</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ateliex.BusinessModel\Ateliex.BusinessModel.csproj" />
+    <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
+    <ProjectReference Include="..\Ateliex.Windows.Infrastructure\Ateliex.Windows.Infrastructure.csproj" />
+    <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cadastro\" />
+    <Folder Include="Decisoes\" />
+  </ItemGroup>
+
+</Project>

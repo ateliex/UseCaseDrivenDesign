@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Ateliex</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ateliex.ApplicationModel\Ateliex.ApplicationModel.csproj" />
+    <ProjectReference Include="..\Ateliex.BusinessModel\Ateliex.BusinessModel.csproj" />
+    <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj" />
+    <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cadastro\" />
+    <Folder Include="Decisoes\" />
+  </ItemGroup>
+
+</Project>

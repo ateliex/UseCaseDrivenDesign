@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Ateliex</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ateliex.BusinessModel\Ateliex.BusinessModel.csproj">
+      <Aliases>business</Aliases>
+    </ProjectReference>
+    <ProjectReference Include="..\Ateliex.DomainModel\Ateliex.DomainModel.csproj" />
+    <ProjectReference Include="..\Ateliex.UseCaseModel\Ateliex.UseCaseModel.csproj">
+      <Aliases>uc</Aliases>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Decisoes\" />
+  </ItemGroup>
+
+</Project>
