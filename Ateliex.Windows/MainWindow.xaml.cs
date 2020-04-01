@@ -1,28 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ateliex.Cadastro.Modelos.ConsultaDeModelos;
+using Ateliex.Decisoes.Comerciais;
+using Ateliex.Decisoes.Comerciais.ConsultaDePlanosComerciais;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Ateliex.Windows
+namespace Ateliex
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        public MainWindow()
+        private readonly IServiceProvider serviceProvider;
+
+        public MainWindow(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+
+            this.serviceProvider = serviceProvider;
+        }
+
+        private void CadastroDeModelosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var modelosWindow = serviceProvider.GetRequiredService<ModelosWindow>();
+
+            modelosWindow.Show();
+        }
+
+        private void PlanejamentoComercialMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var planosComerciaisForm = serviceProvider.GetRequiredService<PlanosComerciaisWindow>();
+
+            planosComerciaisForm.Show();
         }
     }
 }

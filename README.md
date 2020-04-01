@@ -19,5 +19,10 @@
 - Adição da web.
 - Todas as camadas são modularizadas pelos conceitos e não pelo viés técnico.
 
+# Limitações
+- Seed do EF Core obriga "vazar" atributos do modelo de domínio.
+- TransactionScope do Sqlite não funcionou.
+- Investigar problema de escopo (validateScopes: true) pois o contexto de banco não foi "reaproveitado".
+
 # TODO
 - Interface de aplicação uniforme com GET e POST usando MVC padrão.

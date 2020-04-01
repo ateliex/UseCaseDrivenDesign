@@ -9,8 +9,4 @@
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Decisoes\" />
-  </ItemGroup>
-
 </Project>
