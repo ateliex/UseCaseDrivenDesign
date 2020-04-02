@@ -12,7 +12,7 @@ namespace Ateliex
             return Ok(resource);
         }
 
-        [HttpGet("/cadastro")]
+        [HttpGet("cadastro")]
         public IActionResult GetCadastro()
         {
             var resource = new CadastroResource();
@@ -20,7 +20,7 @@ namespace Ateliex
             return Ok(resource);
         }
 
-        [HttpGet("/decisoes")]
+        [HttpGet("decisoes")]
         public IActionResult GetDecisoes()
         {
             var resource = new DecisoesResource();

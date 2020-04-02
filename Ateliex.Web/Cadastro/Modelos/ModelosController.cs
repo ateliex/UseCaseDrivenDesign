@@ -1,5 +1,8 @@
-﻿using Ateliex.Cadastro.Modelos.ConsultaDeModelos;
+﻿using Ateliex.Cadastro.Modelos.CadastroDeModelos;
+using Ateliex.Cadastro.Modelos.ConsultaDeModelos;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Web;
 
 namespace Ateliex.Cadastro.Modelos
 {
@@ -8,45 +11,98 @@ namespace Ateliex.Cadastro.Modelos
     {
         private readonly IConsultaDeModelos consultaDeModelos;
 
-        public ModelosController(IConsultaDeModelos consultaDeModelos)
+        private readonly ICadastroDeModelos cadastroDeModelos;
+
+        public ModelosController(IConsultaDeModelos consultaDeModelos, ICadastroDeModelos cadastroDeModelos)
         {
             this.consultaDeModelos = consultaDeModelos;
+
+            this.cadastroDeModelos = cadastroDeModelos;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(ParametrosDeConsultaDeModelos parametros = null)
         {
             var resource = new ModelosResource();
 
             return Ok(resource);
         }
 
-        [HttpGet("/consulta-de-modelos")]
+        [HttpGet("{id}")]
+        public IActionResult GetModelo(string id)
+        {
+            var codigo = new CodigoDeModelo(id);
+
+            var modelo = consultaDeModelos.ObtemModelo(codigo);
+
+            var resource = new ModeloResource
+            {
+                Data = modelo
+            };
+
+            return Ok(resource);
+        }
+
+        [HttpGet("consulta-de-modelos")]
         public IActionResult GetConsultaDeModelos()
         {
             var parametros = new ParametrosDeConsultaDeModelos
             {
-
+                Nome = null,
+                PrimeiraPagina = 1,
+                TamanhoDaPagina = 10
             };
 
-            return Ok(parametros);
+            var resource = new LinkedResourceForm<ParametrosDeConsultaDeModelos>
+            {
+                Data = parametros,
+                Method = "GET"
+            };
+
+            return Ok(resource);
         }
 
-        [HttpPost("/consulta-de-modelos")]
+        [HttpPost("consulta-de-modelos")]
         public IActionResult PostConsultaDeModelos(ParametrosDeConsultaDeModelos parametros)
         {
             var resposta = consultaDeModelos.ConsultaModelos(parametros);
 
+            var resource = new ModelosResource
+            {
 
+            };
 
-            return Ok(resposta);
+            return CreatedAtAction(nameof(Index), new { }, resource);
         }
 
-        [HttpGet("/cadastro-de-modelos")]
+        [HttpGet("cadastro-de-modelos")]
         public IActionResult GetCadastroDeModelos()
         {
-            var resource = new ModelosResource();
+            var solicitacao = new SolicitacaoDeCadastroDeModelo
+            {
+                Codigo = Guid.NewGuid().ToString(),
+                Nome = "Modelo #"
+            };
+
+            var resource = new LinkedResourceForm<SolicitacaoDeCadastroDeModelo>
+            {
+                Data = solicitacao,
+                Method = "POST"
+            };
 
             return Ok(resource);
+        }
+
+        [HttpPost("cadastro-de-modelos")]
+        public IActionResult PostCadastroDeModelos(SolicitacaoDeCadastroDeModelo solicitacao)
+        {
+            var resposta = cadastroDeModelos.CadastraModelo(solicitacao);
+
+            var resource = new ModeloResource
+            {
+
+            };
+
+            return CreatedAtAction(nameof(Index), new { }, resource);
         }
     }
 }

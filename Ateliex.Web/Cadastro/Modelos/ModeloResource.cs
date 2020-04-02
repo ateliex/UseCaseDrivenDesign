@@ -1,12 +1,13 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 
 namespace Ateliex.Cadastro.Modelos
 {
-    public class ModelosResource : LinkedResourceCollection<ModeloResource>
+    public class ModeloResource : LinkedResource<Modelo>
     {
-        public ModelosResource()
+        public ModeloResource()
         {
-            Title = "Modelos";
+            Title = "Modelo";
 
             HRef = "/cadastro/modelos";
 

@@ -16,6 +16,11 @@ namespace Ateliex.Cadastro.Modelos
             throw new NotImplementedException();
         }
 
+        public Modelo ObtemModelo(CodigoDeModelo codigo)
+        {
+            throw new NotImplementedException();
+        }
+
         public RespostaDeAdicaoDeRecursoDeModelo AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
         {
             throw new NotImplementedException();

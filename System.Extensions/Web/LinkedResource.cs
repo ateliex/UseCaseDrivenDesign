@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace System.Web
+﻿namespace System.Web
 {
     public abstract class LinkedResource
     {
@@ -8,6 +6,11 @@ namespace System.Web
 
         public string HRef { get; set; }
 
-        public List<Link> Links { get; set; }
+        public Link[] Links { get; set; }
+    }
+
+    public class LinkedResource<T> : LinkedResource
+    {
+        public T Data { get; set; }
     }
 }

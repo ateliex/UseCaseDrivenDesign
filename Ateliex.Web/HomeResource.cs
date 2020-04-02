@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web;
+﻿using System.Web;
 
 namespace Ateliex
 {
@@ -11,10 +10,10 @@ namespace Ateliex
 
             HRef = "/";
 
-            Links = new List<Link>
+            Links = new Link[]
             {
-                    new Link {Rel = "cadastro", HRef = "/cadastro", Text = "Cadastro"},
-                    new Link {Rel = "decisoes", HRef = "/decisoes", Text = "Decisões"}
+                new Link {Rel = "cadastro", HRef = "/cadastro", Text = "Cadastro"},
+                new Link {Rel = "decisoes", HRef = "/decisoes", Text = "Decisões"}
             };
         }
     }

@@ -18,6 +18,8 @@ namespace Ateliex
 
             //
 
+            services.AddApplicationCore(configuration);
+
             services.AddDbServices(configuration);
 
             //
