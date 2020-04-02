@@ -4,7 +4,6 @@ using Ateliex.Decisoes.Comerciais.ConsultaDePlanosComerciais;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Transactions;
 
 namespace Ateliex
 {
@@ -23,7 +22,7 @@ namespace Ateliex
 
             //
 
-            services.AddSingleton<IUnitOfWork, AteliexDbContext>();
+            //services.AddSingleton<IUnitOfWork, AteliexDbContext>();
 
             //
 

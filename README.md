@@ -23,6 +23,9 @@
 - Seed do EF Core obriga "vazar" atributos do modelo de domínio.
 - TransactionScope do Sqlite não funcionou.
 - Investigar problema de escopo (validateScopes: true) pois o contexto de banco não foi "reaproveitado".
+- MVC padrão (com postback) é opinativo e não permite modularizar por coneitos (áreas não são multiníveis).
 
 # TODO
-- Interface de aplicação uniforme com GET e POST usando MVC padrão.
+- Interface de aplicação uniforme com GET e POST usando web api.
+- Usar o NavigationService para WPF.
+- Criar um cliente (js - código sob demanad) desacoplado, fora da solution, que usa HATEOAS.

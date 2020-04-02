@@ -1,9 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-Ateliex.Web-0A7F7027-04C6-4CED-A848-940702C06AC0</UserSecretsId>
+    <UserSecretsId>Ateliex</UserSecretsId>
+    <RootNamespace>Ateliex</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosController.cs" />
+    <Compile Remove="Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosResource.cs" />
+  </ItemGroup>
 
 
   <ItemGroup>
@@ -22,7 +28,15 @@
     <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
     <ProjectReference Include="..\Ateliex.Domain\Ateliex.Domain.csproj" />
     <ProjectReference Include="..\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Cadastro\Modelos\CadastroDeModelos\" />
+    <Folder Include="Cadastro\Modelos\ConsultaDeModelos\" />
+    <Folder Include="Decisoes\" />
   </ItemGroup>
 
 </Project>

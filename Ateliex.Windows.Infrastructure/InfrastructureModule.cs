@@ -17,6 +17,8 @@ namespace Ateliex
             //
 
             //services.AddSingleton<IUnitOfWork, TransactionScopeManager>();
+            
+            services.AddSingleton<IUnitOfWork, DummyTransactionManager>();
 
             //
 

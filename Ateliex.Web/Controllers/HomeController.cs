@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Ateliex.Web.Models;
+using Ateliex.Models;
 
-namespace Ateliex.Web.Controllers
+namespace Ateliex.Controllers
 {
     public class HomeController : Controller
     {
