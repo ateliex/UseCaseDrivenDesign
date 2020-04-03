@@ -1,6 +1,6 @@
 ﻿namespace System.Web
 {
-    public abstract class LinkedResource
+    public class Resource
     {
         public string Title { get; set; }
 
@@ -9,7 +9,7 @@
         public Link[] Links { get; set; }
     }
 
-    public class LinkedResource<T> : LinkedResource
+    public class Resource<T> : Resource
     {
         public T Data { get; set; }
     }

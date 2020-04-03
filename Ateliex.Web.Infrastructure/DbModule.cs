@@ -37,5 +37,17 @@ namespace Ateliex
 
             return services;
         }
+
+        public static void EnsureDatabaseCreatedAsync(IServiceScopeFactory serviceScopeFactory)
+        {
+            using (var serviceScope = serviceScopeFactory.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<AteliexDbContext>();
+
+                dbContext.Database.EnsureCreated();
+
+                dbContext.Database.Migrate();
+            }
+        }
     }
 }

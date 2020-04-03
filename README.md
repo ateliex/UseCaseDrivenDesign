@@ -22,8 +22,8 @@
 - TransactionScope do Sqlite não funcionou.
 - Investigar problema de escopo (validateScopes: true) pois o contexto de banco não foi "reaproveitado".
 - MVC padrão (com postback) é opinativo e não permite modularizar por coneitos (áreas não são multiníveis).
+- Requisições de alteração de estado seriam restritas a uma entidade de cada vez(!?).
 
 # TODO
-- Interface de aplicação uniforme com GET e POST usando web api.
 - Criar um cliente JS (código sob demanad) desacoplado (fora da solution, se possível), que usa o HATEOAS (RDD).
 - Criar um cliente .NET (navigation service) desacoplado (fora da solution, se possível), que usa o HATEOAS (RDD).

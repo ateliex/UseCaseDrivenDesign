@@ -2,6 +2,7 @@
 using Ateliex.Cadastro.Modelos.ConsultaDeModelos;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Web;
 
 namespace Ateliex.Cadastro.Modelos
@@ -20,23 +21,35 @@ namespace Ateliex.Cadastro.Modelos
             this.cadastroDeModelos = cadastroDeModelos;
         }
 
-        public IActionResult Index(SolicitacaoDeConsultaDeModelos solicitacao = null)
+        public IActionResult Index(SolicitacaoDeConsultaDeModelos solicitacao)
         {
-            var resource = new ModelosResource();
+            var modelos = consultaDeModelos.ConsultaModelos(solicitacao);
 
-            return Ok(resource);
-        }
+            var data = modelos
+                .Select(modelo => new Resource<Modelo>
+                {
+                    Title = $"Modelo #{modelo.Codigo}",
+                    HRef = $"/cadastro/modelos/{modelo.Codigo}",
+                    Data = modelo,
+                    Links = new Link[]
+                    {
+                        new Link {Rel = "visualizacao-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}", Text = "Visualizar"},
+                        new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
+                        new Link {Rel = "exclusao-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
+                    }
+                })
+                .ToArray();
 
-        [HttpGet("{id}")]
-        public IActionResult GetModelo(string id)
-        {
-            var codigo = new CodigoDeModelo(id);
-
-            var modelo = consultaDeModelos.ObtemModelo(codigo);
-
-            var resource = new ModeloResource
+            var resource = new ResourceCollection<Modelo>
             {
-                Data = modelo
+                Title = "Modelos",
+                HRef = "/cadastro/modelos",
+                Data = data,
+                Links = new Link[]
+                {
+                    new Link {Rel = "consulta-de-modelos", HRef = "/cadastro/modelos/consulta-de-modelos", Text = "Consulta de Modelos"},
+                    new Link {Rel = "cadastro-de-modelos", HRef = "/cadastro/modelos/cadastro-de-modelos", Text = "Cadastro de Modelos"}
+                }
             };
 
             return Ok(resource);
@@ -52,26 +65,40 @@ namespace Ateliex.Cadastro.Modelos
                 TamanhoDaPagina = 10
             };
 
-            var resource = new LinkedResourceForm<SolicitacaoDeConsultaDeModelos>
+            var resource = new ResourceForm<SolicitacaoDeConsultaDeModelos>
             {
+                Title = "Consulta de Modelos",
+                HRef = "/cadastro/modelos/consulta-de-modelos",
                 Data = solicitacao,
-                Method = "GET"
+                Method = "GET",
+                Action = "/cadastro/modelos",
+                Links = new Link[] { }
             };
 
             return Ok(resource);
         }
 
-        [HttpPost("consulta-de-modelos")]
-        public IActionResult PostConsultaDeModelos(SolicitacaoDeConsultaDeModelos solicitacao)
+        [HttpGet("{id}")]
+        public IActionResult GetModelo(string id)
         {
-            var resposta = consultaDeModelos.ConsultaModelos(solicitacao);
+            var codigo = new CodigoDeModelo(id);
 
-            var resource = new ModelosResource
+            var modelo = consultaDeModelos.ObtemModelo(codigo);
+
+            var resource = new Resource<Modelo>
             {
-
+                Title = $"Modelo #{modelo.Codigo}",
+                HRef = $"/cadastro/modelos/{modelo.Codigo}",
+                Data = modelo,
+                Links = new Link[]
+                {
+                    new Link {Rel = "visualizacao-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}", Text = "Visualizar"},
+                    new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
+                    new Link {Rel = "exclusao-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
+                }
             };
 
-            return CreatedAtAction(nameof(Index), new { }, resource);
+            return Ok(resource);
         }
 
         [HttpGet("cadastro-de-modelos")]
@@ -83,10 +110,14 @@ namespace Ateliex.Cadastro.Modelos
                 Nome = "Modelo #"
             };
 
-            var resource = new LinkedResourceForm<SolicitacaoDeCadastroDeModelo>
+            var resource = new ResourceForm<SolicitacaoDeCadastroDeModelo>
             {
+                Title = "Consulta de Modelos",
+                HRef = "/cadastro/modelos/cadastro-de-modelos",
                 Data = solicitacao,
-                Method = "POST"
+                Method = "POST",
+                Action = "/cadastro/modelos/cadastro-de-modelos",
+                Links = new Link[] { }
             };
 
             return Ok(resource);
@@ -95,14 +126,22 @@ namespace Ateliex.Cadastro.Modelos
         [HttpPost("cadastro-de-modelos")]
         public IActionResult PostCadastroDeModelos(SolicitacaoDeCadastroDeModelo solicitacao)
         {
-            var resposta = cadastroDeModelos.CadastraModelo(solicitacao);
+            var modelo = cadastroDeModelos.CadastraModelo(solicitacao);
 
-            var resource = new ModeloResource
+            var resource = new Resource<Modelo>
             {
-
+                Title = $"Modelo #{modelo.Codigo}",
+                HRef = $"/cadastro/modelos/{modelo.Codigo}",
+                Data = modelo,
+                Links = new Link[]
+                {
+                    new Link {Rel = "visualizacao-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}", Text = "Visualizar"},
+                    new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
+                    new Link {Rel = "exclusao-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
+                }
             };
 
-            return CreatedAtAction(nameof(Index), new { }, resource);
+            return CreatedAtAction(nameof(GetModelo), new { id = modelo.Codigo }, resource);
         }
     }
 }

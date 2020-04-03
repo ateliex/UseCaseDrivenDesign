@@ -8,13 +8,13 @@ namespace Ateliex.Decisoes.Comerciais
 {
     public class PlanoComercial
     {
-        public string Codigo { get; private set; }
+        public string Codigo { get; internal set; }
 
-        public string Nome { get; private set; }
+        public string Nome { get; internal set; }
 
-        public DateTime Data { get; private set; }
+        public DateTime Data { get; internal set; }
 
-        public decimal RendaBrutaMensal { get; private set; }
+        public decimal RendaBrutaMensal { get; internal set; }
 
         public decimal RendaBrutaMensalCalculada
         {
@@ -115,7 +115,7 @@ namespace Ateliex.Decisoes.Comerciais
             RendaBrutaMensal = rendaBrutaMensal;
         }
 
-        public PlanoComercial()
+        internal PlanoComercial()
         {
             Custos = new HashSet<Custo>();
 
@@ -172,15 +172,15 @@ namespace Ateliex.Decisoes.Comerciais
 
     public class Custo
     {
-        public PlanoComercial PlanoComercial { get; private set; }
+        public PlanoComercial PlanoComercial { get; internal set; }
 
-        public TipoDeCusto Tipo { get; private set; }
+        public TipoDeCusto Tipo { get; internal set; }
 
-        public string Descricao { get; private set; }
+        public string Descricao { get; internal set; }
 
-        public decimal Valor { get; private set; }
+        public decimal Valor { get; internal set; }
 
-        public decimal Percentual { get; private set; }
+        public decimal Percentual { get; internal set; }
 
         public decimal ValorCalculado
         {
@@ -258,21 +258,21 @@ namespace Ateliex.Decisoes.Comerciais
             Percentual = percentual;
         }
 
-        public Custo()
+        internal Custo()
         {
 
         }
 
-        public string PlanoComercialCodigo { get; private set; }
+        public string PlanoComercialCodigo { get; internal set; }
     }
 
     public class ItemDePlanoComercial
     {
-        public virtual PlanoComercial PlanoComercial { get; private set; }
+        public virtual PlanoComercial PlanoComercial { get; internal set; }
 
-        public int Id { get; private set; }
+        public int Id { get; internal set; }
 
-        public virtual Modelo Modelo { get; private set; }
+        public virtual Modelo Modelo { get; internal set; }
 
         public decimal CustoDeProducao { get { return Modelo.CustoDeProducao; } }
 
@@ -291,9 +291,9 @@ namespace Ateliex.Decisoes.Comerciais
             }
         }
 
-        public decimal Margem { get; private set; }
+        public decimal Margem { get; internal set; }
 
-        public decimal MargemPercentual { get; private set; }
+        public decimal MargemPercentual { get; internal set; }
 
         public decimal MargemCalculada
         {
@@ -321,7 +321,7 @@ namespace Ateliex.Decisoes.Comerciais
             }
         }
 
-        public decimal? TaxaDeMarcacaoSugerida { get; private set; }
+        public decimal? TaxaDeMarcacaoSugerida { get; internal set; }
 
         public decimal PrecoDeVenda
         {
@@ -341,7 +341,7 @@ namespace Ateliex.Decisoes.Comerciais
             }
         }
 
-        public decimal? PrecoDeVendaDesejado { get; private set; }
+        public decimal? PrecoDeVendaDesejado { get; internal set; }
 
         public ItemDePlanoComercial(PlanoComercial planoComercial, int id, Modelo modelo)
         {
@@ -381,14 +381,14 @@ namespace Ateliex.Decisoes.Comerciais
             SugereTaxaDeMarcacao(taxaDeMarcacaoSugerida);
         }
 
-        public ItemDePlanoComercial()
+        internal ItemDePlanoComercial()
         {
 
         }
 
-        public string PlanoComercialCodigo { get; private set; }
+        public string PlanoComercialCodigo { get; internal set; }
 
-        public string ModeloCodigo { get; private set; }
+        public string ModeloCodigo { get; internal set; }
     }
 
     public interface IRepositorioDePlanosComerciais

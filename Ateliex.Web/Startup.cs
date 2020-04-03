@@ -36,14 +36,18 @@ namespace Ateliex
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc(options =>
-            {
-                options.OutputFormatters.Insert(0, new XhtmlOutputFormatter());
-            });
+                {
+                    options.OutputFormatters.Insert(0, new XhtmlOutputFormatter());
+                });
 
             services.AddControllers(options =>
-            {
-                options.RespectBrowserAcceptHeader = true;
-            });
+                {
+                    options.RespectBrowserAcceptHeader = true;
+                })
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
 
             services.AddControllersWithViews();
 
@@ -91,6 +95,10 @@ namespace Ateliex
             //        pattern: "{controller=Home}/{action=Index}/{id?}");
             //    endpoints.MapRazorPages();
             //});
+
+            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
+            DbModule.EnsureDatabaseCreatedAsync(serviceScopeFactory);
         }
     }
 }

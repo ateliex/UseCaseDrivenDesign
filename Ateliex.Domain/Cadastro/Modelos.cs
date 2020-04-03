@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.DomainModel;
 using System.Linq;
 
@@ -21,12 +23,16 @@ namespace Ateliex.Cadastro.Modelos
 
     public class Modelo : Entity
     {
-        public CodigoDeModelo Id { get; private set; }
+        [Description("Id")]
+        public CodigoDeModelo Id { get; internal set; }
 
-        public string Codigo { get; private set; }
+        [Description("Código")]
+        public string Codigo { get; internal set; }
 
-        public string Nome { get; private set; }
+        [Description("Nome")]
+        public string Nome { get; internal set; }
 
+        [Description("Custo de Produção")]
         public decimal CustoDeProducao
         {
             get
@@ -37,6 +43,7 @@ namespace Ateliex.Cadastro.Modelos
             }
         }
 
+        [Description("Recursos")]
         public virtual ICollection<Recurso> Recursos { get; }
 
         public Modelo(string codigo, string nome)
@@ -62,7 +69,7 @@ namespace Ateliex.Cadastro.Modelos
             Nome = nome;
         }
 
-        //private void Recursos_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        //internal void Recursos_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         //{
         //    if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
         //    {
@@ -76,9 +83,9 @@ namespace Ateliex.Cadastro.Modelos
         //    }
         //}
 
-        private Modelo()
+        internal Modelo()
         {
-
+            Recursos = new HashSet<Recurso>();
         }
     }
 
@@ -91,18 +98,25 @@ namespace Ateliex.Cadastro.Modelos
 
     public class Recurso : Entity
     {
-        public virtual Modelo Modelo { get; private set; }
+        [Description("Modelo")]
+        public virtual Modelo Modelo { get; internal set; }
 
-        public int Id { get; private set; }
+        [Description("Nome")]
+        public int Id { get; internal set; }
 
-        public TipoDeRecurso Tipo { get; private set; }
+        [Description("Tipo")]
+        public TipoDeRecurso Tipo { get; internal set; }
 
-        public string Descricao { get; private set; }
+        [Description("Descrição")]
+        public string Descricao { get; internal set; }
 
-        public decimal Custo { get; private set; }
+        [Description("Custo")]
+        public decimal Custo { get; internal set; }
 
-        public int Unidades { get; private set; }
+        [Description("Unidades")]
+        public int Unidades { get; internal set; }
 
+        [Description("Custo por Unidade")]
         public decimal CustoPorUnidade
         {
             get
@@ -153,12 +167,12 @@ namespace Ateliex.Cadastro.Modelos
             Unidades = unidades;
         }
 
-        private Recurso()
+        internal Recurso()
         {
             //PropertyChanged += Recurso_PropertyChanged;
         }
 
-        //private static void Recurso_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        //internal static void Recurso_PropertyChanged(object sender, PropertyChangedEventArgs e)
         //{
         //    var recurso = sender as Recurso;
 
@@ -170,7 +184,8 @@ namespace Ateliex.Cadastro.Modelos
         //    }
         //}
 
-        public string ModeloCodigo { get; private set; }
+        [Infrastructure]
+        public string ModeloCodigo { get; internal set; }
     }
 
     public interface IRepositorioDeModelos

@@ -54,6 +54,29 @@ namespace Ateliex.Cadastro.Modelos
         {
             try
             {
+                var modelo = db.Modelos
+                    .Include(p => p.Recursos)
+                    .FirstOrDefault(p => p.Codigo == codigo.Valor);
+
+                if (modelo == default(Modelo))
+                {
+                    throw new ApplicationException();
+                }
+
+                return modelo;
+            }
+            catch (Exception ex)
+            {
+                // TODO: Tratar erros de persistência aqui.
+
+                throw new ApplicationException($"Erro ao obter modelo '{codigo.Valor}'.", ex);
+            }
+        }
+
+        public Modelo ObtemModeloParaEdicao(CodigoDeModelo codigo)
+        {
+            try
+            {
                 var modelo = db.Modelos.Find(codigo.Valor);
 
                 return modelo;
