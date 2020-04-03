@@ -20,7 +20,7 @@ namespace Ateliex.Cadastro.Modelos
             this.cadastroDeModelos = cadastroDeModelos;
         }
 
-        public IActionResult Index(ParametrosDeConsultaDeModelos parametros = null)
+        public IActionResult Index(SolicitacaoDeConsultaDeModelos solicitacao = null)
         {
             var resource = new ModelosResource();
 
@@ -45,16 +45,16 @@ namespace Ateliex.Cadastro.Modelos
         [HttpGet("consulta-de-modelos")]
         public IActionResult GetConsultaDeModelos()
         {
-            var parametros = new ParametrosDeConsultaDeModelos
+            var solicitacao = new SolicitacaoDeConsultaDeModelos
             {
                 Nome = null,
                 PrimeiraPagina = 1,
                 TamanhoDaPagina = 10
             };
 
-            var resource = new LinkedResourceForm<ParametrosDeConsultaDeModelos>
+            var resource = new LinkedResourceForm<SolicitacaoDeConsultaDeModelos>
             {
-                Data = parametros,
+                Data = solicitacao,
                 Method = "GET"
             };
 
@@ -62,9 +62,9 @@ namespace Ateliex.Cadastro.Modelos
         }
 
         [HttpPost("consulta-de-modelos")]
-        public IActionResult PostConsultaDeModelos(ParametrosDeConsultaDeModelos parametros)
+        public IActionResult PostConsultaDeModelos(SolicitacaoDeConsultaDeModelos solicitacao)
         {
-            var resposta = consultaDeModelos.ConsultaModelos(parametros);
+            var resposta = consultaDeModelos.ConsultaModelos(solicitacao);
 
             var resource = new ModelosResource
             {

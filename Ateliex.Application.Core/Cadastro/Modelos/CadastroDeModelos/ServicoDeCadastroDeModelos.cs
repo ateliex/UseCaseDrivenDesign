@@ -16,7 +16,7 @@ namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
             this.repositorioDeModelos = repositorioDeModelos;
         }
 
-        public RespostaDeCadastroDeModelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao)
+        public Modelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao)
         {
             unitOfWork.BeginTransaction();
 
@@ -28,12 +28,7 @@ namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
 
                 unitOfWork.Commit();
 
-                var resposta = new RespostaDeCadastroDeModelo
-                {
-
-                };
-
-                return resposta;
+                return modelo;
             }
             catch (Exception)
             {
@@ -43,7 +38,7 @@ namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
             }
         }
 
-        public RespostaDeAdicaoDeRecursoDeModelo AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
+        public Recurso AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
         {
             throw new NotImplementedException();
         }

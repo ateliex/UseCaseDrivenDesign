@@ -14,26 +14,18 @@ namespace Ateliex.Decisoes.Comerciais
             this.db = db;
         }
 
-        public RespostaDeConsultaDePlanosComerciais ConsultaPlanosComerciais(ParametrosDeConsultaDePlanosComerciais parametros)
+        public PlanoComercial[] ConsultaPlanosComerciais(SolicitacaoDeConsultaDePlanosComerciais solicitacao)
         {
             try
             {
-                var itens = db.Modelos
-                    .Include(p => p.Recursos)
-                    .Select(p => new ItemDeConsultaDePlanosComerciais
-                    {
-
-                        Codigo = p.Codigo,
-                        Nome = p.Nome
-                    })
+                var planosComerciais = db.PlanosComerciais
+                    .Include(p => p.Custos)
+                    .Include(p => p.Itens)
+                        .ThenInclude(p => p.Modelo)
+                            .ThenInclude(p => p.Recursos)
                     .ToArray();
 
-                var resposta = new RespostaDeConsultaDePlanosComerciais
-                {
-                    Itens = itens
-                };
-
-                return resposta;
+                return planosComerciais;
             }
             catch (Exception ex)
             {

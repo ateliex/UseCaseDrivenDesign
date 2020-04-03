@@ -16,11 +16,11 @@ namespace Ateliex.Cadastro.Modelos
             this.http = http;
         }
 
-        public ResultadoDaConsultaDeModelos ConsultaModelos(ParametrosDeConsultaDeModelos parametros)
+        public Modelo[] ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao)
         {
-            var resposta = db.ConsultaModelos(parametros);
+            var modelos = db.ConsultaModelos(solicitacao);
 
-            return resposta;
+            return modelos;
         }
 
         public Modelo[] ObtemModelos()
@@ -46,7 +46,7 @@ namespace Ateliex.Cadastro.Modelos
                 Nome = modelo.Nome
             };
 
-            http.CadastraModelo(solicitacao);
+            http.Add(modelo);
         }
 
         public void Update(Modelo modelo)
@@ -62,7 +62,7 @@ namespace Ateliex.Cadastro.Modelos
         {
             db.Remove(modelo);
 
-            http.RemoveModelo(modelo.Codigo);
+            http.Remove(modelo);
         }
     }
 }

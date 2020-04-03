@@ -134,26 +134,26 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
                         SerializeInnerResource(li, innerResource);
                     }
                 }
-                else if (resource.GetType().BaseType.GetGenericTypeDefinition() == typeof(LinkedResourceForm<>))
-                {
-                    var formResource = resource as LinkedResourceForm<string>;
+                //else if (resource.GetType().BaseType.GetGenericTypeDefinition() == typeof(LinkedResourceForm<>))
+                //{
+                //    var formResource = resource as LinkedResourceForm<string>;
 
-                    var form = new TagBuilder("form");
+                //    var form = new TagBuilder("form");
 
-                    body.InnerHtml.AppendHtml(form);
+                //    body.InnerHtml.AppendHtml(form);
 
-                    form.AddCssClass("ui form");
+                //    form.AddCssClass("ui form");
 
-                    form.Attributes.Add("action", formResource.Method);
+                //    form.Attributes.Add("action", formResource.Method);
 
-                    //
+                //    //
 
-                    var button = new TagBuilder("button");
+                //    var button = new TagBuilder("button");
 
-                    form.InnerHtml.AppendHtml(button);
+                //    form.InnerHtml.AppendHtml(button);
 
-                    button.AddCssClass("ui button");
-                }
+                //    button.AddCssClass("ui button");
+                //}
                 else
                 {
                     var div = new TagBuilder("div");

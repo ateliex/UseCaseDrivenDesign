@@ -2,9 +2,9 @@
 {
     public interface ICadastroDeModelos
     {
-        RespostaDeCadastroDeModelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao);
+        Modelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao);
 
-        RespostaDeAdicaoDeRecursoDeModelo AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao);
+        Recurso AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao);
 
         void RemoveRecursoDeModelo(string codigo, string descricao);
 
@@ -18,11 +18,6 @@
         public string Nome { get; set; }
     }
 
-    public class RespostaDeCadastroDeModelo
-    {
-
-    }
-
     public class SolicitacaoDeAdicaoDeRecursoDeModelo
     {
         public string Codigo { get; set; }
@@ -34,10 +29,5 @@
         public decimal Custo { get; set; }
 
         public int Unidades { get; set; }
-    }
-
-    public class RespostaDeAdicaoDeRecursoDeModelo
-    {
-
     }
 }

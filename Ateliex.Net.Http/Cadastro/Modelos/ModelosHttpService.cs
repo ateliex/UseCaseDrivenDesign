@@ -1,19 +1,12 @@
-﻿using Ateliex.Cadastro.Modelos.CadastroDeModelos;
-using Ateliex.Cadastro.Modelos.ConsultaDeModelos;
-using System;
+﻿using System;
 
 namespace Ateliex.Cadastro.Modelos
 {
-    public class ModelosHttpService : IConsultaDeModelos, ICadastroDeModelos
+    public class ModelosHttpService : IRepositorioDeModelos
     {
         public ModelosHttpService()
         {
 
-        }
-
-        public ResultadoDaConsultaDeModelos ConsultaModelos(ParametrosDeConsultaDeModelos parametros)
-        {
-            throw new NotImplementedException();
         }
 
         public Modelo ObtemModelo(CodigoDeModelo codigo)
@@ -21,29 +14,19 @@ namespace Ateliex.Cadastro.Modelos
             throw new NotImplementedException();
         }
 
-        public RespostaDeAdicaoDeRecursoDeModelo AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
+        public void Add(Modelo modelo)
         {
             throw new NotImplementedException();
         }
 
-        public RespostaDeCadastroDeModelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao)
+        public void Update(Modelo modelo)
         {
-            var resposta = new RespostaDeCadastroDeModelo
-            {
-
-            };
-
-            return resposta;
+            throw new NotImplementedException();
         }
 
-        public void RemoveModelo(string codigo)
+        public void Remove(Modelo modelo)
         {
-            
-        }
-
-        public void RemoveRecursoDeModelo(string codigo, string descricao)
-        {
-            
+            throw new NotImplementedException();
         }
     }
 }

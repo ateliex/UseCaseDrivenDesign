@@ -19,30 +19,30 @@ namespace Ateliex.Cadastro.Modelos.ConsultaDeModelos
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var parametros = new ParametrosDeConsultaDeModelos
+            var solicitacao = new SolicitacaoDeConsultaDeModelos
             {
 
             };
 
-            var resultado = consultaDeModelos.ConsultaModelos(parametros);
+            var modelos = consultaDeModelos.ConsultaModelos(solicitacao);
 
-            var list = resultado.Itens.Select(p => ItemDeConsultaDeModeloViewModel.From(p, selecteds)).ToList();
+            var list = modelos.Select(p => ItemDeConsultaDeModeloViewModel.From(p, selecteds)).ToList();
 
             CollectionViewSource modelosViewSource = ((CollectionViewSource)(this.FindResource("modelosViewSource")));
 
             modelosViewSource.Source = list;
         }
 
-        private IEnumerable<ItemDeConsultaDeModelos> selecteds;
+        private IEnumerable<Modelo> selecteds;
 
-        public void SetSelecteds(IEnumerable<ItemDeConsultaDeModelos> selecteds)
+        public void SetSelecteds(IEnumerable<Modelo> selecteds)
         {
             this.selecteds = selecteds;
         }
 
-        public IEnumerable<ItemDeConsultaDeModelos> GetSelecteds()
+        public IEnumerable<Modelo> GetSelecteds()
         {
-            var list = new List<ItemDeConsultaDeModelos>();
+            var list = new List<Modelo>();
 
             foreach (var item in modelosDataGrid.Items)
             {

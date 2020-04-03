@@ -14,26 +14,15 @@ namespace Ateliex.Cadastro.Modelos
             this.db = db;
         }
 
-        public ResultadoDaConsultaDeModelos ConsultaModelos(ParametrosDeConsultaDeModelos parametros)
+        public Modelo[] ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao)
         {
             try
             {
-                var itens = db.Modelos
+                var modelos = db.Modelos
                     .Include(p => p.Recursos)
-                    .Select(p => new ItemDeConsultaDeModelos
-                    {
-
-                        Codigo = p.Codigo,
-                        Nome = p.Nome
-                    })
                     .ToArray();
 
-                var resposta = new ResultadoDaConsultaDeModelos
-                {
-                    Itens = itens
-                };
-
-                return resposta;
+                return modelos;
             }
             catch (Exception ex)
             {

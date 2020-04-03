@@ -7,23 +7,19 @@ namespace Ateliex.Cadastro.Modelos.ConsultaDeModelos
     {
         public bool Selected { get; set; }
 
-        public ItemDeConsultaDeModelos Modelo { get; set; }
+        public Modelo Modelo { get; set; }
 
-        public static ItemDeConsultaDeModeloViewModel From(ItemDeConsultaDeModelos modelo, IEnumerable<ItemDeConsultaDeModelos> selecteds)
+        public static ItemDeConsultaDeModeloViewModel From(Modelo modelo, IEnumerable<Modelo> selecteds)
         {
             var selected = selecteds.Any(p => p.Codigo == modelo.Codigo);
 
-            //var modeloViewModel = ModeloViewModel.From(modelo);
+            var viewModel = new ItemDeConsultaDeModeloViewModel
+            {
+                Selected = selected,
+                Modelo = modelo,
+            };
 
-            //var viewModel = new ItemDeConsultaDeModeloViewModel
-            //{
-            //    Selected = selected,
-            //    Modelo = modeloViewModel,
-            //};
-
-            //return viewModel;
-
-            return null;
+            return viewModel;
         }
     }
 }

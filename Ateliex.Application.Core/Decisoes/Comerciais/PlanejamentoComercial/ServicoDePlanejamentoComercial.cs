@@ -9,17 +9,17 @@ namespace Ateliex.Decisoes.Comerciais.PlanejamentoComercial
 
         }
 
-        public RespostaDeCriacaoDePlanoComercial CriaPlano(SolicitacaoDeCriacaoDePlanoComercial solicitacao)
+        public PlanoComercial CriaPlano(SolicitacaoDeCriacaoDePlanoComercial solicitacao)
         {
             throw new NotImplementedException();
         }
 
-        public RespostaDeAdicaoDeCustoDePlanoComercial AdicionaCustoDePlanoComercial(SolicitacaoDeAdicaoDeCustoDePlanoComercial solicitacao)
+        public Custo AdicionaCustoDePlanoComercial(SolicitacaoDeAdicaoDeCustoDePlanoComercial solicitacao)
         {
             throw new NotImplementedException();
         }
 
-        public RespostaDeAdicaoDeItemDePlanoComercial AdicionaItemDePlanoComercial(SolicitacaoDeAdicaoDeItemDePlanoComercial solicitacao)
+        public ItemDePlanoComercial AdicionaItemDePlanoComercial(SolicitacaoDeAdicaoDeItemDePlanoComercial solicitacao)
         {
             throw new NotImplementedException();
         }

@@ -178,5 +178,9 @@ namespace Ateliex.Cadastro.Modelos
         Modelo ObtemModelo(CodigoDeModelo codigo);
 
         void Add(Modelo modelo);
+
+        void Update(Modelo modelo);
+
+        void Remove(Modelo modelo);
     }
 }

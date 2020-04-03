@@ -23,16 +23,16 @@ namespace Ateliex.Cadastro.Modelos.ConsultaDeModelos
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var parametros = new ParametrosDeConsultaDeModelos
+            var solicitacao = new SolicitacaoDeConsultaDeModelos
             {
 
             };
 
-            var resultado = consultaDeModelos.ConsultaModelos(parametros);
+            var modelos = consultaDeModelos.ConsultaModelos(solicitacao);
 
             CollectionViewSource modelosViewSource = ((CollectionViewSource)(this.FindResource("modelosViewSource")));
 
-            modelosViewSource.Source = resultado.Itens;
+            modelosViewSource.Source = modelos;
         }
 
         private void SetStatusBar(string value)

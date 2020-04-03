@@ -4,11 +4,11 @@ namespace Ateliex.Decisoes.Comerciais.PlanejamentoComercial
 {
     public interface IPlanejamentoComercial
     {
-        RespostaDeCriacaoDePlanoComercial CriaPlano(SolicitacaoDeCriacaoDePlanoComercial solicitacao);
+        PlanoComercial CriaPlano(SolicitacaoDeCriacaoDePlanoComercial solicitacao);
 
-        RespostaDeAdicaoDeCustoDePlanoComercial AdicionaCustoDePlanoComercial(SolicitacaoDeAdicaoDeCustoDePlanoComercial solicitacao);
+        Custo AdicionaCustoDePlanoComercial(SolicitacaoDeAdicaoDeCustoDePlanoComercial solicitacao);
 
-        RespostaDeAdicaoDeItemDePlanoComercial AdicionaItemDePlanoComercial(SolicitacaoDeAdicaoDeItemDePlanoComercial solicitacao);
+        ItemDePlanoComercial AdicionaItemDePlanoComercial(SolicitacaoDeAdicaoDeItemDePlanoComercial solicitacao);
 
         void ExcluiCustoDePlanoComercial(string codigo, string descricao);
 
@@ -29,11 +29,6 @@ namespace Ateliex.Decisoes.Comerciais.PlanejamentoComercial
         public decimal RendaBrutaMensal { get; set; }
     }
 
-    public class RespostaDeCriacaoDePlanoComercial
-    {
-
-    }
-
     public class SolicitacaoDeAdicaoDeCustoDePlanoComercial
     {
         public string Codigo { get; set; }
@@ -45,11 +40,6 @@ namespace Ateliex.Decisoes.Comerciais.PlanejamentoComercial
         public decimal Valor { get; set; }
 
         public decimal Percentual { get; set; }
-    }
-
-    public class RespostaDeAdicaoDeCustoDePlanoComercial
-    {
-
     }
 
     public class SolicitacaoDeAdicaoDeItemDePlanoComercial
@@ -67,10 +57,5 @@ namespace Ateliex.Decisoes.Comerciais.PlanejamentoComercial
         public decimal? TaxaDeMarcacaoSugerida { get; set; }
 
         public decimal? PrecoDeVendaDesejado { get; set; }
-    }
-
-    public class RespostaDeAdicaoDeItemDePlanoComercial
-    {
-
     }
 }
