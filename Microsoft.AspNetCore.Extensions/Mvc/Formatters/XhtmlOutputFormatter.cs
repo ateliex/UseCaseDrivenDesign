@@ -285,6 +285,8 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
 
             parent.InnerHtml.AppendHtml(tr);
 
+            tr.AddCssClass("resource");
+
             var innerResourceType = innerResource.GetType();
 
             var dataItem = innerResourceType.GetProperty("Data").GetValue(innerResource, null);
@@ -311,7 +313,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
 
                 var td = new TagBuilder("td");
 
-                parent.InnerHtml.AppendHtml(td);
+                tr.InnerHtml.AppendHtml(td);
 
                 td.AddCssClass(itemProperty.Name);
 
@@ -322,7 +324,7 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
 
             var tdActions = new TagBuilder("td");
 
-            parent.InnerHtml.AppendHtml(tdActions);
+            tr.InnerHtml.AppendHtml(tdActions);
 
             foreach (var link in innerResource.Links)
             {
@@ -454,6 +456,9 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
 
                 if (value is IEnumerable && property.PropertyType.IsGenericType)
                 {
+                    var itemType = property.PropertyType.GenericTypeArguments[0];
+
+
                     var list = new TagBuilder("div");
 
                     item.InnerHtml.AppendHtml(list);
@@ -461,11 +466,33 @@ namespace Microsoft.AspNetCore.Mvc.Formatters
                     list.AddCssClass("list");
 
 
-                    var itemType = property.PropertyType.GenericTypeArguments[0];
-
                     foreach (var item2 in value as IEnumerable)
                     {
-                        SerializeData(list, item2, itemType);
+                        var header2 = new TagBuilder("div");
+
+                        list.InnerHtml.AppendHtml(header2);
+
+                        header2.AddCssClass("header");
+
+                        header2.InnerHtml.AppendHtml($"{itemType.Name} #");
+
+
+                        var item3 = new TagBuilder("div");
+
+                        list.InnerHtml.AppendHtml(item3);
+
+                        item3.AddCssClass("item");
+
+                        item3.AddCssClass(itemType.Name);
+                        
+                        
+                        var list2 = new TagBuilder("div");
+
+                        item3.InnerHtml.AppendHtml(list2);
+
+                        list2.AddCssClass("list");
+
+                        SerializeData(list2, item2, itemType);
                     }
                 }
                 else

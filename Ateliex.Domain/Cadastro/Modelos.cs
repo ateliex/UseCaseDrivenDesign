@@ -69,6 +69,31 @@ namespace Ateliex.Cadastro.Modelos
             Nome = nome;
         }
 
+        internal Recurso AdicionaRecurso(TipoDeRecurso tipo, string descricao, decimal custo, int unidades)
+        {
+            var max = Recursos.Count;
+
+            var nextId = ++max;
+
+            var recurso = new Recurso(this, nextId, tipo, descricao, custo, unidades);
+
+            Recursos.Add(recurso);
+
+            return recurso;
+        }
+
+        public Recurso ObtemRecurso(int idDeRecurso)
+        {
+            var recurso = Recursos.FirstOrDefault(recurso => recurso.Id == idDeRecurso);
+
+            if (recurso == default(Recurso))
+            {
+                throw new ApplicationException();
+            }
+
+            return recurso;
+        }
+
         //internal void Recursos_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         //{
         //    if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
@@ -101,7 +126,7 @@ namespace Ateliex.Cadastro.Modelos
         [Description("Modelo")]
         public virtual Modelo Modelo { get; internal set; }
 
-        [Description("Nome")]
+        [Description("Id")]
         public int Id { get; internal set; }
 
         [Description("Tipo")]
@@ -134,9 +159,11 @@ namespace Ateliex.Cadastro.Modelos
             }
         }
 
-        public Recurso(Modelo modelo, TipoDeRecurso tipo, string descricao, decimal custo, int unidades)
+        public Recurso(Modelo modelo, int id, TipoDeRecurso tipo, string descricao, decimal custo, int unidades)
         {
             Modelo = modelo;
+
+            Id = id;
 
             Tipo = tipo;
 

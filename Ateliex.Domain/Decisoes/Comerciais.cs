@@ -145,11 +145,7 @@ namespace Ateliex.Decisoes.Comerciais
 
         public ItemDePlanoComercial AdicionaItem(Modelo modelo)
         {
-            var max = Itens.Count;
-
-            var nextId = max++;
-
-            var model = new ItemDePlanoComercial(this, nextId, modelo);
+            var model = new ItemDePlanoComercial(this, modelo);
 
             Itens.Add(model);
 
@@ -173,6 +169,8 @@ namespace Ateliex.Decisoes.Comerciais
     public class Custo
     {
         public PlanoComercial PlanoComercial { get; internal set; }
+
+        public int Id { get; set; }
 
         public TipoDeCusto Tipo { get; internal set; }
 
@@ -270,8 +268,6 @@ namespace Ateliex.Decisoes.Comerciais
     {
         public virtual PlanoComercial PlanoComercial { get; internal set; }
 
-        public int Id { get; internal set; }
-
         public virtual Modelo Modelo { get; internal set; }
 
         public decimal CustoDeProducao { get { return Modelo.CustoDeProducao; } }
@@ -343,10 +339,8 @@ namespace Ateliex.Decisoes.Comerciais
 
         public decimal? PrecoDeVendaDesejado { get; internal set; }
 
-        public ItemDePlanoComercial(PlanoComercial planoComercial, int id, Modelo modelo)
+        public ItemDePlanoComercial(PlanoComercial planoComercial, Modelo modelo)
         {
-            Id = id;
-
             PlanoComercial = planoComercial;
 
             Modelo = modelo;

@@ -109,7 +109,7 @@ namespace Ateliex.Cadastro.Modelos
         {
             try
             {
-                db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (Exception)
             {
@@ -125,7 +125,7 @@ namespace Ateliex.Cadastro.Modelos
             {
                 db.Modelos.Remove(modelo);
 
-                db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (Exception ex)
             {

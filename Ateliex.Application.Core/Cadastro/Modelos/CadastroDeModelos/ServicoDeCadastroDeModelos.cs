@@ -40,7 +40,28 @@ namespace Ateliex.Cadastro.Modelos.CadastroDeModelos
 
         public Recurso AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
         {
-            throw new NotImplementedException();
+            unitOfWork.BeginTransaction();
+
+            try
+            {
+                var codigo = new CodigoDeModelo(solicitacao.Codigo);
+
+                var modelo = repositorioDeModelos.ObtemModelo(codigo);
+
+                var recurso = modelo.AdicionaRecurso(solicitacao.Tipo, solicitacao.Descricao, solicitacao.Custo, solicitacao.Unidades);
+
+                repositorioDeModelos.Update(modelo);
+
+                unitOfWork.Commit();
+
+                return recurso;
+            }
+            catch (Exception)
+            {
+                unitOfWork.Rollback();
+
+                throw;
+            }
         }
 
         public void RemoveRecursoDeModelo(string codigo, string descricao)

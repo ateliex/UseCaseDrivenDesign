@@ -42,7 +42,9 @@ namespace Ateliex
         {
             using (var serviceScope = serviceScopeFactory.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetService<AteliexDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<AteliexDbContext>();
+
+                dbContext.Database.EnsureDeleted();
 
                 dbContext.Database.EnsureCreated();
 

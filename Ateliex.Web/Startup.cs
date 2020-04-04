@@ -96,7 +96,7 @@ namespace Ateliex
             //    endpoints.MapRazorPages();
             //});
 
-            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
             DbModule.EnsureDatabaseCreatedAsync(serviceScopeFactory);
         }
