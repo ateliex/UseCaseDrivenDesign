@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Ateliex</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ateliex.Domain\Ateliex.Domain.csproj" />
+    <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>
