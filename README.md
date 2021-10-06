@@ -2,15 +2,15 @@
 
 ## Visão da Arquitetura
 
-![Visão da Arquitetura](Resources/docs/Visão%20da%20Aqruitetura.png)
+![Visão da Arquitetura](docs/Visão%20da%20Aqruitetura.png)
 
 ## 1 - Casos de Uso
 
-![1 - Casos de Uso](Resources/docs/1%20-%20Casos%20de%20Uso.png)
+![1 - Casos de Uso](docs/1%20-%20Casos%20de%20Uso.png)
 
 ## Calcula Taxa de Marcação
 
-![Calcula Taxa de Marcação](Resources/docs/Calcula%20Taxa%20de%20Marcação.png)
+![Calcula Taxa de Marcação](docs/Calcula%20Taxa%20de%20Marcação.png)
 
 # Observações
 - Todas as camadas são modularizadas pelos conceitos e não pelo viés técnico.

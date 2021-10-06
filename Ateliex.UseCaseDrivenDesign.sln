@@ -18,17 +18,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Documentação", "6 - D
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Windows", "Ateliex.Windows\Ateliex.Windows.csproj", "{15F0B06A-685C-49B5-B85B-2AED64F10BC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Windows", "src\Ateliex.Windows\Ateliex.Windows.csproj", "{15F0B06A-685C-49B5-B85B-2AED64F10BC4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Extensions", "System.Extensions\System.Extensions.csproj", "{1104E006-FCB3-4A00-87FE-6C02F735FBF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Extensions", "src\System.Extensions\System.Extensions.csproj", "{1104E006-FCB3-4A00-87FE-6C02F735FBF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application", "Ateliex.Application\Ateliex.Application.csproj", "{2ECB3ED8-E84A-4D77-9E2D-E5F09FB7714F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application", "src\Ateliex.Application\Ateliex.Application.csproj", "{2ECB3ED8-E84A-4D77-9E2D-E5F09FB7714F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Windows.Infrastructure", "Ateliex.Windows.Infrastructure\Ateliex.Windows.Infrastructure.csproj", "{31BABC55-EE36-4B40-998A-B396309D918F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Windows.Infrastructure", "src\Ateliex.Windows.Infrastructure\Ateliex.Windows.Infrastructure.csproj", "{31BABC55-EE36-4B40-998A-B396309D918F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application.Core", "Ateliex.Application.Core\Ateliex.Application.Core.csproj", "{E8E37B2E-609A-4750-930D-3020B1F8E343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application.Core", "src\Ateliex.Application.Core\Ateliex.Application.Core.csproj", "{E8E37B2E-609A-4750-930D-3020B1F8E343}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Domain", "Ateliex.Domain\Ateliex.Domain.csproj", "{6C891D7C-F087-4EAB-A466-E4764A6419D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Domain", "src\Ateliex.Domain\Ateliex.Domain.csproj", "{6C891D7C-F087-4EAB-A466-E4764A6419D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Services", "Data Services", "{00ED9475-BD87-4B78-B26E-B1DC855DE5D6}"
 EndProject
@@ -36,19 +36,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration Services", "Int
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web", "Ateliex.Web\Ateliex.Web.csproj", "{C19D76E5-8674-44EA-B16E-28B1CC4E2726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web", "src\Ateliex.Web\Ateliex.Web.csproj", "{C19D76E5-8674-44EA-B16E-28B1CC4E2726}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web.Infrastructure", "Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj", "{95A12CAB-DE01-48E6-B073-5386F31CDD11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web.Infrastructure", "src\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj", "{95A12CAB-DE01-48E6-B073-5386F31CDD11}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.EntityFrameworkCore", "Ateliex.EntityFrameworkCore\Ateliex.EntityFrameworkCore.csproj", "{2142E509-24AE-46F1-A591-42AC8025B8C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.EntityFrameworkCore", "src\Ateliex.EntityFrameworkCore\Ateliex.EntityFrameworkCore.csproj", "{2142E509-24AE-46F1-A591-42AC8025B8C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Data.SqlClient", "Ateliex.Data.SqlClient\Ateliex.Data.SqlClient.csproj", "{B0FB06C9-D84F-4580-B668-EA02B6FD419A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Data.SqlClient", "src\Ateliex.Data.SqlClient\Ateliex.Data.SqlClient.csproj", "{B0FB06C9-D84F-4580-B668-EA02B6FD419A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Net.Http", "Ateliex.Net.Http\Ateliex.Net.Http.csproj", "{5BC14214-80DB-4AB3-999A-FC2E76182FA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Net.Http", "src\Ateliex.Net.Http\Ateliex.Net.Http.csproj", "{5BC14214-80DB-4AB3-999A-FC2E76182FA5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Xaml.Extensions", "System.Xaml.Extensions\System.Xaml.Extensions.csproj", "{99A15D07-7E80-4797-A48C-F5459ADB9B41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Xaml.Extensions", "src\System.Xaml.Extensions\System.Xaml.Extensions.csproj", "{99A15D07-7E80-4797-A48C-F5459ADB9B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.Extensions", "Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj", "{32724530-824B-4AEC-AA11-E8FD3C83DE24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.Extensions", "src\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj", "{32724530-824B-4AEC-AA11-E8FD3C83DE24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
