@@ -1,4 +1,4 @@
-﻿using Ateliex.Cadastro.Modelos;
+﻿using Ateliex.Modulos.Cadastro.Modelos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,6 +1,6 @@
-﻿using Ateliex.Cadastro.Modelos;
-using Ateliex.Decisoes;
-using Ateliex.Decisoes.Comerciais;
+﻿using Ateliex.Modulos.Cadastro.Modelos;
+using Ateliex.Modulos.Decisoes;
+using Ateliex.Modulos.Decisoes.Comerciais;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Transactions;

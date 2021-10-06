@@ -18,4 +18,8 @@
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Modulos\" />
+  </ItemGroup>
+
 </Project>

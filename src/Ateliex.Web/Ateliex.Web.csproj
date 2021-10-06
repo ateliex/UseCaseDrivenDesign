@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosController.cs" />
-    <Compile Remove="Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosResource.cs" />
+    <Compile Remove="Decisoes\**" />
+    <Content Remove="Decisoes\**" />
+    <EmbeddedResource Remove="Decisoes\**" />
+    <None Remove="Decisoes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Modulos\Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosController.cs" />
+    <Compile Remove="Modulos\Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosResource.cs" />
   </ItemGroup>
 
 
@@ -35,9 +42,8 @@
 
 
   <ItemGroup>
-    <Folder Include="Cadastro\Modelos\CadastroDeModelos\" />
-    <Folder Include="Cadastro\Modelos\ConsultaDeModelos\" />
-    <Folder Include="Decisoes\" />
+    <Folder Include="Modulos\Cadastro\Modelos\CadastroDeModelos\" />
+    <Folder Include="Modulos\Cadastro\Modelos\ConsultaDeModelos\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
-﻿using Ateliex.Cadastro.Modelos;
-using Ateliex.Cadastro.Modelos.ConsultaDeModelos;
+﻿using Ateliex.Modulos.Cadastro.Modelos;
+using Ateliex.Modulos.Cadastro.Modelos.ConsultaDeModelos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Transactions;
