@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Camada de Apresentação", "1 - Camada de Apresentação", "{3781FB21-E83F-4D3B-A29B-FB4E68660185}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{3781FB21-E83F-4D3B-A29B-FB4E68660185}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Camada de Aplicação", "2 - Camada de Aplicação", "{E1E17336-6F0F-4975-A74D-47D6ACC212A1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Aplicação", "2 - Aplicação", "{E1E17336-6F0F-4975-A74D-47D6ACC212A1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Camada de Domínio", "3 - Camada de Domínio", "{25E45A0F-D90B-44C5-8FEA-A75146316D6D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domínio", "3 - Domínio", "{25E45A0F-D90B-44C5-8FEA-A75146316D6D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Camada de Infraestrutura", "4 - Camada de Infraestrutura", "{8AE13952-DFE4-4988-962C-A3D5704783F6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infraestrutura", "4 - Infraestrutura", "{8AE13952-DFE4-4988-962C-A3D5704783F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Dependências Externas", "5 - Dependências Externas", "{7C798FA4-603D-4753-B469-6C2A79A98CFB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Documentação", "6 - Documentação", "{9B6AACDD-1936-4738-9D9C-9F84E935B75E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Documentação", "7 - Documentação", "{9B6AACDD-1936-4738-9D9C-9F84E935B75E}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
@@ -34,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Services", "Data Servi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration Services", "Integration Services", "{F7684930-CC2D-43AB-A4BE-528FA5C5720D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Cross-Cutting", "6 - Cross-Cutting", "{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web", "src\Ateliex.Web\Ateliex.Web.csproj", "{C19D76E5-8674-44EA-B16E-28B1CC4E2726}"
 EndProject
@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Net.Http", "src\Ate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Xaml.Extensions", "src\System.Xaml.Extensions\System.Xaml.Extensions.csproj", "{99A15D07-7E80-4797-A48C-F5459ADB9B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.Extensions", "src\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj", "{32724530-824B-4AEC-AA11-E8FD3C83DE24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Extensions", "src\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj", "{32724530-824B-4AEC-AA11-E8FD3C83DE24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,7 +121,6 @@ Global
 		{6C891D7C-F087-4EAB-A466-E4764A6419D1} = {25E45A0F-D90B-44C5-8FEA-A75146316D6D}
 		{00ED9475-BD87-4B78-B26E-B1DC855DE5D6} = {8AE13952-DFE4-4988-962C-A3D5704783F6}
 		{F7684930-CC2D-43AB-A4BE-528FA5C5720D} = {8AE13952-DFE4-4988-962C-A3D5704783F6}
-		{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A} = {8AE13952-DFE4-4988-962C-A3D5704783F6}
 		{C19D76E5-8674-44EA-B16E-28B1CC4E2726} = {3781FB21-E83F-4D3B-A29B-FB4E68660185}
 		{95A12CAB-DE01-48E6-B073-5386F31CDD11} = {8AE13952-DFE4-4988-962C-A3D5704783F6}
 		{2142E509-24AE-46F1-A591-42AC8025B8C1} = {00ED9475-BD87-4B78-B26E-B1DC855DE5D6}
