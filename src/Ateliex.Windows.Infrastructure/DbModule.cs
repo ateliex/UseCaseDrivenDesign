@@ -1,6 +1,5 @@
-﻿using Ateliex.Modulos.Cadastro.Modelos;
-using Ateliex.Modulos.Decisoes.Comerciais;
-using Ateliex.Modulos.Decisoes.Comerciais.ConsultaDePlanosComerciais;
+﻿using Ateliex.Modules.Cadastro.Modelos;
+using Ateliex.Modules.Decisoes.Comerciais;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

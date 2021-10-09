@@ -1,4 +1,5 @@
-﻿using Ateliex.Modulos.Cadastro.Modelos.CadastroDeModelos;
+﻿using Ateliex.Modules.Cadastro.Modelos;
+using Ateliex.Modules.Decisoes.Vendas;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,10 @@ namespace Ateliex
             //
 
             services.AddTransient<ICadastroDeModelos, ServicoDeCadastroDeModelos>();
+            
+            services.AddTransient<CalculoDeTaxaDeMarcacao, ServicoDeCalculoDeTaxaDeMarcacao>();
+            
+            services.AddTransient<CalculadoraDeTaxaDeMarcacao>();
 
             //
 

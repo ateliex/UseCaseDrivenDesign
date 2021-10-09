@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modulos\" />
+    <Folder Include="Modules\" />
   </ItemGroup>
 
 </Project>

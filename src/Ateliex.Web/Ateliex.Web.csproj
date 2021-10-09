@@ -8,14 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Decisoes\**" />
+    <Compile Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
     <Content Remove="Decisoes\**" />
+    <Content Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
     <EmbeddedResource Remove="Decisoes\**" />
+    <EmbeddedResource Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
     <None Remove="Decisoes\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Modulos\Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosController.cs" />
-    <Compile Remove="Modulos\Cadastro\Modelos\ConsultaDeModelos\ConsultaDeModelosResource.cs" />
+    <None Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
   </ItemGroup>
 
 
@@ -38,12 +37,6 @@
     <ProjectReference Include="..\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Modulos\Cadastro\Modelos\CadastroDeModelos\" />
-    <Folder Include="Modulos\Cadastro\Modelos\ConsultaDeModelos\" />
   </ItemGroup>
 
 </Project>

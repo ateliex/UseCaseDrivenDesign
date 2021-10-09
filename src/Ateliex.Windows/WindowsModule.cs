@@ -1,6 +1,6 @@
-﻿using Ateliex.Modulos.Cadastro.Modelos.CadastroDeModelos;
-using Ateliex.Modulos.Cadastro.Modelos.ConsultaDeModelos;
-using Ateliex.Modulos.Decisoes.Comerciais.ConsultaDePlanosComerciais;
+﻿using Ateliex.Modules.Cadastro.Modelos.CadastroDeModelos;
+using Ateliex.Modules.Cadastro.Modelos.ConsultaDeModelos;
+using Ateliex.Modules.Decisoes.Comerciais.ConsultaDePlanosComerciais;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ateliex
