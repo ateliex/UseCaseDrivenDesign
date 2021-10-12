@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ateliex.Modules.Decisoes
+namespace Ateliex.Modules.Decisoes.Comerciais
 {
-    class ComerciaisTests
+    class PlanosComerciaisTests
     {
     }
 }

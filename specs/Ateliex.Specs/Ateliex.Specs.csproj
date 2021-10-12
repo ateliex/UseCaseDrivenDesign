@@ -6,6 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\mards\.nuget\packages\microsoft.testplatform.testhost\16.5.0\build\netcoreapp2.1\x64\testhost.dll" />
+    <Content Remove="C:\Users\mards\.nuget\packages\microsoft.testplatform.testhost\16.5.0\build\netcoreapp2.1\x64\testhost.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\mards\.nuget\packages\specflow.plus.livingdocplugin\3.9.5\build\..\lib\netstandard2.0\LivingDoc.Dtos.dll" />
+    <None Remove="C:\Users\mards\.nuget\packages\specflow.plus.livingdocplugin\3.9.5\build\..\lib\netstandard2.0\LivingDoc.SpecFlowPlugin.dll" />
+    <None Remove="C:\Users\mards\.nuget\packages\specflow.xunit\3.9.8\build\\..\lib\netstandard2.0\TechTalk.SpecFlow.xUnit.SpecFlowPlugin.dll" />
+    <None Remove="C:\Users\mards\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" />
+    <None Remove="C:\Users\mards\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" />
+    <None Remove="C:\Users\mards\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.19" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.5" />
@@ -34,6 +48,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Ateliex.Application\Ateliex.Application.csproj">
       <Aliases>application</Aliases>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Ateliex.Domain\Ateliex.Domain.csproj">
+      <Aliases>domain</Aliases>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Ateliex.Web\Ateliex.Web.csproj" />
     <ProjectReference Include="..\Ateliex.Business\Ateliex.Business.csproj" />

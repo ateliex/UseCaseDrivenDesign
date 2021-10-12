@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 using System;
 using System.Linq;
 using System.Web;
@@ -85,14 +86,14 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
             var resource = new Resource<Modelo>
             {
-                Title = $"Modelo #{modelo.Codigo}",
-                HRef = $"/cadastro/modelos/{modelo.Codigo}",
+                Title = $"Modelo #{id}",
+                HRef = $"/cadastro/modelos/{id}",
                 Data = modelo,
                 Links = new Link[]
                 {
-                    new Link {Rel = "recursos-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}/recursos", Text = "Recursos"},
-                    new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
-                    new Link {Rel = "exclusao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
+                    new Link {Rel = "recursos-de-modelo", HRef = $"/cadastro/modelos/{id}/recursos", Text = "Recursos"},
+                    new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{id}/alteracao-de-modelos", Text = "Alterar"},
+                    new Link {Rel = "exclusao-de-modelos", HRef = $"/cadastro/modelos/{id}/exclusao-de-modelos", Text = "Excluir"}
                 }
             };
 
@@ -110,13 +111,13 @@ namespace Ateliex.Modules.Cadastro.Modelos
                 .Select(recurso => new Resource<Recurso>
                 {
                     Title = $"Recurso #{recurso.Id}",
-                    HRef = $"/cadastro/modelos/{codigo.Valor}/recursos",
+                    HRef = $"/cadastro/modelos/{id}/recursos",
                     Data = recurso,
                     Links = new Link[]
                     {
-                        new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}", Text = "Detalhar"},
-                        new Link {Rel = "alteracao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}/alteracao-de-recursos", Text = "Alterar"},
-                        new Link {Rel = "exclusao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}/exclusao-de-recursos", Text = "Excluir"}
+                        new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}", Text = "Detalhar"},
+                        new Link {Rel = "alteracao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}/alteracao-de-recursos", Text = "Alterar"},
+                        new Link {Rel = "exclusao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}/exclusao-de-recursos", Text = "Excluir"}
                     }
                 })
                 .ToArray();
@@ -124,11 +125,11 @@ namespace Ateliex.Modules.Cadastro.Modelos
             var resource = new ResourceCollection<Recurso>
             {
                 Title = "Recursos",
-                HRef = $"/cadastro/modelos/{codigo.Valor}/recursos",
+                HRef = $"/cadastro/modelos/{id}/recursos",
                 Data = data,
                 Links = new Link[]
                 {
-                    new Link {Rel = "adicao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/adicao-de-recursos", Text = "Adição de Recursos"}
+                    new Link {Rel = "adicao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/adicao-de-recursos", Text = "Adição de Recursos"}
                 }
             };
 
@@ -142,17 +143,17 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
             var solicitacao = new SolicitacaoDeAdicaoDeRecursoDeModelo
             {
-                Codigo = id,
+                ModeloCodigo = id,
                 Descricao = "Recurso #"
             };
 
             var resource = new ResourceForm<SolicitacaoDeAdicaoDeRecursoDeModelo>
             {
                 Title = "Adição de Recursos",
-                HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/adicao-de-recursos",
+                HRef = $"/cadastro/modelos/{id}/recursos/adicao-de-recursos",
                 Data = solicitacao,
                 Method = "POST",
-                Action = $"/cadastro/modelos/{codigo.Valor}/recursos/adicao-de-recursos",
+                Action = $"/cadastro/modelos/{id}/recursos/adicao-de-recursos",
                 Links = new Link[] { }
             };
 
@@ -160,26 +161,38 @@ namespace Ateliex.Modules.Cadastro.Modelos
         }
 
         [HttpPost("{id}/recursos/adicao-de-recursos")]
-        public IActionResult PostAdicaoDeRecursos(string id, SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
+        public IActionResult PostAdicaoDeRecursos(string id, [FromBody] SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
         {
-            var codigo = new CodigoDeModelo(id);
+            solicitacao.ModeloCodigo = id;
+
+            var codigo = new CodigoDeModelo(id);            
 
             var recurso = cadastroDeModelos.AdicionaRecursoDeModelo(solicitacao);
 
-            var resource = new Resource<Recurso>
+            if (HttpContext.Request.Headers.ContainsKey("Accept"))
             {
-                Title = $"Recurso #{recurso.Id}",
-                HRef = $"/cadastro/modelos/{codigo.Valor}/recusos/{recurso.Id}/adicao-de-recursos",
-                Data = recurso,
-                Links = new Link[]
-                {
-                    new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}", Text = "Detalhar"},
-                    new Link {Rel = "alteracao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}/alteracao-de-recursos", Text = "Alterar"},
-                    new Link {Rel = "exclusao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}/exclusao-de-recursos", Text = "Excluir"}
-                }
-            };
+                var accept = HttpContext.Request.Headers["Accept"];
 
-            return CreatedAtAction(nameof(GetDetalhesDeRecurso), new { id = codigo.Valor, idDeRecurso = recurso.Id }, resource);
+                if (accept == "text/html")
+                {
+                    var resource = new Resource<Recurso>
+                    {
+                        Title = $"Recurso #{recurso.Id}",
+                        HRef = $"/cadastro/modelos/{id}/recusos/{recurso.Id}/adicao-de-recursos",
+                        Data = recurso,
+                        Links = new Link[]
+                        {
+                    new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}", Text = "Detalhar"},
+                    new Link {Rel = "alteracao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}/alteracao-de-recursos", Text = "Alterar"},
+                    new Link {Rel = "exclusao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}/exclusao-de-recursos", Text = "Excluir"}
+                        }
+                    };
+
+                    return CreatedAtAction(nameof(GetDetalhesDeRecurso), new { id = id, idDeRecurso = recurso.Id }, resource);
+                }
+            }
+            
+            return CreatedAtAction(nameof(GetDetalhesDeRecurso), new { id = codigo.Valor, idDeRecurso = recurso.Id }, recurso);
         }
 
         [HttpGet("{id}/recursos/{idDeRecurso}")]
@@ -194,12 +207,12 @@ namespace Ateliex.Modules.Cadastro.Modelos
             var resource = new Resource<Modelo>
             {
                 Title = $"Recurso #{idDeRecurso}",
-                HRef = $"/cadastro/modelos/{codigo.Valor}/recusos/{recurso.Id}",
+                HRef = $"/cadastro/modelos/{id}/recusos/{recurso.Id}",
                 Data = modelo,
                 Links = new Link[]
                 {
-                    new Link {Rel = "alteracao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}/alteracao-de-recursos", Text = "Alterar"},
-                    new Link {Rel = "exclusao-de-recursos", HRef = $"/cadastro/modelos/{codigo.Valor}/recursos/{recurso.Id}/exclusao-de-recursos", Text = "Excluir"}
+                    new Link {Rel = "alteracao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}/alteracao-de-recursos", Text = "Alterar"},
+                    new Link {Rel = "exclusao-de-recursos", HRef = $"/cadastro/modelos/{id}/recursos/{recurso.Id}/exclusao-de-recursos", Text = "Excluir"}
                 }
             };
 
@@ -229,24 +242,34 @@ namespace Ateliex.Modules.Cadastro.Modelos
         }
 
         [HttpPost("cadastro-de-modelos")]
-        public IActionResult PostCadastroDeModelos(SolicitacaoDeCadastroDeModelo solicitacao)
+        public IActionResult PostCadastroDeModelos([FromBody] SolicitacaoDeCadastroDeModelo solicitacao)
         {
             var modelo = cadastroDeModelos.CadastraModelo(solicitacao);
 
-            var resource = new Resource<Modelo>
+            if (HttpContext.Request.Headers.ContainsKey("Accept"))
             {
-                Title = $"Modelo #{modelo.Codigo}",
-                HRef = $"/cadastro/modelos/{modelo.Codigo}",
-                Data = modelo,
-                Links = new Link[]
+                var accept = HttpContext.Request.Headers["Accept"];
+
+                if (accept == "text/html")
                 {
+                    var resource = new Resource<Modelo>
+                    {
+                        Title = $"Modelo #{modelo.Codigo}",
+                        HRef = $"/cadastro/modelos/{modelo.Codigo}",
+                        Data = modelo,
+                        Links = new Link[]
+                        {
                     new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}", Text = "Detalhar"},
                     new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
                     new Link {Rel = "exclusao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
-                }
-            };
+                        }
+                    };
 
-            return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, resource);
+                    return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, resource);
+                }
+            }
+
+            return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, modelo);
         }
     }
 }

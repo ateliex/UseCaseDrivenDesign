@@ -1,23 +1,21 @@
-﻿using System.Collections.Generic;
-
-namespace Ateliex.Modules.Cadastro.Modelos
+﻿namespace Ateliex.Modules.Cadastro.Modelos
 {
     public class CodigoDeModelo
     {
-        string Valor { get; }
-
-        //string ToString();
+        public string Valor { get; set; }
     }
 
     public class Modelo
     {
-        string Codigo { get; }
-        decimal CustoDeProducao { get; }
-        CodigoDeModelo Id { get; }
-        string Nome { get; }
-        ICollection<Recurso> Recursos { get; }
-
-        //Recurso ObtemRecurso(int idDeRecurso);
+        public string Codigo { get; set; }
+        
+        public decimal CustoDeProducao { get; set; }
+        
+        public CodigoDeModelo Id { get; set; }
+        
+        public string Nome { get; set; }
+        
+        public Recurso[] Recursos { get; set; }
     }
 
     public enum TipoDeRecurso
@@ -29,13 +27,20 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
     public class Recurso
     {
-        decimal Custo { get; }
-        decimal CustoPorUnidade { get; }
-        string Descricao { get; }
-        int Id { get; }
-        Modelo Modelo { get; }
-        string ModeloCodigo { get; }
-        TipoDeRecurso Tipo { get; }
-        int Unidades { get; }
+        public decimal Custo { get; set; }
+        
+        public decimal CustoPorUnidade { get; set; }
+        
+        public string Descricao { get; set; }
+        
+        public int Id { get; set; }
+        
+        public Modelo Modelo { get; set; }
+        
+        public string ModeloCodigo { get; set; }
+        
+        public TipoDeRecurso Tipo { get; set; }
+        
+        public decimal Unidades { get; set; }
     }
 }

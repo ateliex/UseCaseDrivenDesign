@@ -37,7 +37,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
         {
             get
             {
-                var total = Recursos.Sum(p => p.CustoPorUnidade);
+                var total = Recursos.Sum(p => p.Custo);
 
                 return total;
             }
@@ -69,7 +69,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             Nome = nome;
         }
 
-        internal Recurso AdicionaRecurso(TipoDeRecurso tipo, string descricao, decimal custo, int unidades)
+        internal Recurso AdicionaRecurso(TipoDeRecurso tipo, string descricao, decimal custo, decimal unidades)
         {
             var max = Recursos.Count;
 
@@ -139,7 +139,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
         public decimal Custo { get; internal set; }
 
         [Description("Unidades")]
-        public int Unidades { get; internal set; }
+        public decimal Unidades { get; internal set; }
 
         [Description("Custo por Unidade")]
         public decimal CustoPorUnidade
@@ -159,7 +159,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             }
         }
 
-        public Recurso(Modelo modelo, int id, TipoDeRecurso tipo, string descricao, decimal custo, int unidades)
+        public Recurso(Modelo modelo, int id, TipoDeRecurso tipo, string descricao, decimal custo, decimal unidades)
         {
             Modelo = modelo;
 
@@ -189,7 +189,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             Custo = custo;
         }
 
-        internal void DefineUnidades(int unidades)
+        internal void DefineUnidades(decimal unidades)
         {
             Unidades = unidades;
         }

@@ -44,7 +44,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
             try
             {
-                var codigo = new CodigoDeModelo(solicitacao.Codigo);
+                var codigo = new CodigoDeModelo(solicitacao.ModeloCodigo);
 
                 var modelo = repositorioDeModelos.ObtemModelo(codigo);
 

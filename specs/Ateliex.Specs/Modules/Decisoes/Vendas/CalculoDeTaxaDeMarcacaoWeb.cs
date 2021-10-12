@@ -1,44 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net.Http;
 using System.Text;
-using Xunit;
 
 namespace Ateliex.Modules.Decisoes.Vendas
 {
     public class CalculoDeTaxaDeMarcacaoWeb : CalculoDeTaxaDeMarcacao
     {
-        private readonly WebApplicationFactory<Startup> webFactory;
-
         private readonly HttpClient httpClient;
 
-        public CalculoDeTaxaDeMarcacaoWeb(AteliexWebFactory webFactory)
+        public CalculoDeTaxaDeMarcacaoWeb(HttpClient httpClient)
         {
-            this.webFactory = webFactory.WithWebHostBuilder(builder => builder.ConfigureServices(services =>
-            {
-
-            }));
-
-            httpClient = webFactory.CreateClient(new WebApplicationFactoryClientOptions
-            {
-                BaseAddress = new Uri("http://localhost")
-            });
+            this.httpClient = httpClient;
         }
 
         public decimal CalculaTaxaDeMarcacao(decimal cf, decimal cv, decimal ml)
         {
             var path = new Uri("/api/vendas/calculoDeTaxaDeMarcacao", UriKind.Relative);
 
-            var httpContent = new StringContent("", Encoding.UTF8, "application/json");
+            var content = $"{{ cf: {cf} }}";
+
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
 
             var httpResponse = httpClient.PostAsync(path, httpContent).ConfigureAwait(false).GetAwaiter().GetResult();
 
-            httpResponse.EnsureSuccessStatusCode();
+            //httpResponse.EnsureSuccessStatusCode();
 
-            var content = httpResponse.Content.ReadAsStringAsync().Result;
+            var response = httpResponse.Content.ReadAsStringAsync().Result;
 
-            var tm = decimal.Parse(content);
+            var tm = decimal.Parse(response);
 
             return tm;
         }

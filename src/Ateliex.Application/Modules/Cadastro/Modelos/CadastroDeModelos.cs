@@ -20,14 +20,14 @@
 
     public class SolicitacaoDeAdicaoDeRecursoDeModelo
     {
-        public string Codigo { get; set; }
+        public string ModeloCodigo { get; set; }
 
-        public virtual TipoDeRecurso Tipo { get; set; }
+        public TipoDeRecurso Tipo { get; set; }
 
-        public virtual string Descricao { get; set; }
+        public string Descricao { get; set; }
 
         public decimal Custo { get; set; }
 
-        public int Unidades { get; set; }
+        public decimal Unidades { get; set; }
     }
 }

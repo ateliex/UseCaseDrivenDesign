@@ -17,11 +17,20 @@ namespace Ateliex.Modules.Decisoes.Vendas
         }
 
         [HttpPost("calculoDeTaxaDeMarcacao")]
-        public IActionResult Post([FromBody] decimal cf, [FromBody] decimal cv, [FromBody] decimal ml)
+        public IActionResult Post([FromBody] CalculoDeTaxaDeMarcacaoRequest request)
         {
-            var tm = calculoDeTaxaDeMarcacao.CalculaTaxaDeMarcacao(cf, cv, ml);
+            var tm = calculoDeTaxaDeMarcacao.CalculaTaxaDeMarcacao(request.CF, request.CV, request.ML);
 
-            return Ok(tm);
+            return Accepted(tm);
         }
+    }
+
+    public class CalculoDeTaxaDeMarcacaoRequest
+    {
+        public decimal CF { get; set; }
+        
+        public decimal CV { get; set; }
+        
+        public decimal ML { get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace Ateliex
 
                 dbContext.Database.EnsureCreated();
 
-                dbContext.Database.Migrate();
+                //dbContext.Database.Migrate();
             }
         }
     }

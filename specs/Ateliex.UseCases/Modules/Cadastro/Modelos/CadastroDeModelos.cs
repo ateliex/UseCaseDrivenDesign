@@ -2,9 +2,9 @@
 {
     public interface CadastroDeModelos
     {
-        void CadastraModelo(Modelo modelo);
+        Modelo CadastraModelo(Modelo modelo);
 
-        void AdicionaRecursoDeModelo(Recurso recurso);
+        Modelo AdicionaRecursoDeModelo(Recurso recurso);
 
         void RemoveRecursoDeModelo(string codigo, string descricao);
 
