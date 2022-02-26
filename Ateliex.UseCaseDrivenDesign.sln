@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{3781FB21-E83F-4D3B-A29B-FB4E68660185}"
 EndProject
@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domínio", "3 - Domíni
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infraestrutura", "4 - Infraestrutura", "{8AE13952-DFE4-4988-962C-A3D5704783F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Dependências Externas", "5 - Dependências Externas", "{7C798FA4-603D-4753-B469-6C2A79A98CFB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Dependências Externas", "6 - Dependências Externas", "{7C798FA4-603D-4753-B469-6C2A79A98CFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Documentação", "7 - Documentação", "{9B6AACDD-1936-4738-9D9C-9F84E935B75E}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Services", "Data Servi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration Services", "Integration Services", "{F7684930-CC2D-43AB-A4BE-528FA5C5720D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Cross-Cutting", "6 - Cross-Cutting", "{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Cross-Cutting", "5 - Cross-Cutting", "{18AE83CD-2D26-4459-ACE7-C7D0FD2FD63A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Web", "src\Ateliex.Web\Ateliex.Web.csproj", "{C19D76E5-8674-44EA-B16E-28B1CC4E2726}"
 EndProject
@@ -58,7 +58,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.UseCases", "specs\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Specs", "specs\Ateliex.Specs\Ateliex.Specs.csproj", "{1E589C6B-198E-482D-8C4D-316849832419}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ateliex.Business", "specs\Ateliex.Business\Ateliex.Business.csproj", "{FA491E67-32CA-4084-A8DF-4B86DE37309D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Business", "specs\Ateliex.Business\Ateliex.Business.csproj", "{FA491E67-32CA-4084-A8DF-4B86DE37309D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
