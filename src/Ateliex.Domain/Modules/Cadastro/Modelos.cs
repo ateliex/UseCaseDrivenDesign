@@ -19,6 +19,11 @@ namespace Ateliex.Modules.Cadastro.Modelos
         {
             return $"Modelo-{Valor}";
         }
+
+        private CodigoDeModelo()
+        {
+
+        }
     }
 
     public class Modelo : Entity

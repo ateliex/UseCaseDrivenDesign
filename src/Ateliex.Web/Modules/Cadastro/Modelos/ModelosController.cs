@@ -7,7 +7,7 @@ using System.Web;
 namespace Ateliex.Modules.Cadastro.Modelos
 {
     [Route("/cadastro/modelos")]
-    public class ModelosController : Controller
+    public class ModelosController : ControllerBase
     {
         private readonly IConsultaDeModelos consultaDeModelos;
 
@@ -20,6 +20,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             this.cadastroDeModelos = cadastroDeModelos;
         }
 
+        [HttpGet(Name = "GetModelos")]
         public IActionResult GetModelos(SolicitacaoDeConsultaDeModelos solicitacao)
         {
             var modelos = consultaDeModelos.ConsultaModelos(solicitacao);
@@ -165,7 +166,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
         {
             solicitacao.ModeloCodigo = id;
 
-            var codigo = new CodigoDeModelo(id);            
+            var codigo = new CodigoDeModelo(id);
 
             var recurso = cadastroDeModelos.AdicionaRecursoDeModelo(solicitacao);
 
@@ -191,7 +192,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
                     return CreatedAtAction(nameof(GetDetalhesDeRecurso), new { id = id, idDeRecurso = recurso.Id }, resource);
                 }
             }
-            
+
             return CreatedAtAction(nameof(GetDetalhesDeRecurso), new { id = codigo.Valor, idDeRecurso = recurso.Id }, recurso);
         }
 
@@ -242,34 +243,35 @@ namespace Ateliex.Modules.Cadastro.Modelos
         }
 
         [HttpPost("cadastro-de-modelos")]
-        public IActionResult PostCadastroDeModelos([FromBody] SolicitacaoDeCadastroDeModelo solicitacao)
+        public IActionResult PostCadastroDeModelos(SolicitacaoDeCadastroDeModelo solicitacao)
         {
             var modelo = cadastroDeModelos.CadastraModelo(solicitacao);
 
-            if (HttpContext.Request.Headers.ContainsKey("Accept"))
+            var resource = new Resource<Modelo>
             {
-                var accept = HttpContext.Request.Headers["Accept"];
-
-                if (accept == "text/html")
+                Title = $"Modelo #{modelo.Codigo}",
+                HRef = $"/cadastro/modelos/{modelo.Codigo}",
+                Data = modelo,
+                Links = new Link[]
                 {
-                    var resource = new Resource<Modelo>
-                    {
-                        Title = $"Modelo #{modelo.Codigo}",
-                        HRef = $"/cadastro/modelos/{modelo.Codigo}",
-                        Data = modelo,
-                        Links = new Link[]
-                        {
-                    new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}", Text = "Detalhar"},
-                    new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
-                    new Link {Rel = "exclusao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
-                        }
-                    };
-
-                    return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, resource);
+                        new Link {Rel = "detalhes-de-modelo", HRef = $"/cadastro/modelos/{modelo.Codigo}", Text = "Detalhar"},
+                        new Link {Rel = "alteracao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/alteracao-de-modelos", Text = "Alterar"},
+                        new Link {Rel = "exclusao-de-modelos", HRef = $"/cadastro/modelos/{modelo.Codigo}/exclusao-de-modelos", Text = "Excluir"}
                 }
-            }
+            };
 
-            return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, modelo);
+            return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, resource);
+
+            //if (HttpContext.Request.Headers.ContainsKey("Accept"))
+            //{
+            //    var accept = HttpContext.Request.Headers["Accept"];
+
+            //    if (accept.Contains("text/html"))
+            //    {
+            //    }
+            //}
+
+            //return CreatedAtAction(nameof(GetDetalhesDeModelo), new { id = modelo.Codigo }, modelo);
         }
     }
 }

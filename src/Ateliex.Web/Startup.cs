@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Reflection;
+using System.IO;
 
 namespace Ateliex
 {
@@ -49,9 +51,21 @@ namespace Ateliex
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
 
-            services.AddRazorPages();
+            //services.AddRazorPages();
+
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            
+            services.AddEndpointsApiExplorer();
+
+            services.AddSwaggerGen(options =>
+            {
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            });
+
 
             services.AddInfrastructure(Configuration);
         }
@@ -64,6 +78,10 @@ namespace Ateliex
                 app.UseDeveloperExceptionPage();
 
                 app.UseDatabaseErrorPage();
+
+                app.UseSwagger();
+                
+                app.UseSwaggerUI();
             }
             else
             {
@@ -91,14 +109,20 @@ namespace Ateliex
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
+            //        name: "areas",
+            //        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+            //    );
+
+            //    endpoints.MapControllerRoute(
             //        name: "default",
             //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //    endpoints.MapRazorPages();
+
+            //    //endpoints.MapRazorPages();
             //});
 
             var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
-            DbModule.EnsureDatabaseCreatedAsync(serviceScopeFactory);
+            EntityFrameworkCoreOptionsExtenions.EnsureDatabaseCreatedAsync(serviceScopeFactory);
         }
     }
 }

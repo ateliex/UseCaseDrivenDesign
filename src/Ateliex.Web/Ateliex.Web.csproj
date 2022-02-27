@@ -4,17 +4,19 @@
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>Ateliex</UserSecretsId>
     <RootNamespace>Ateliex</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Decisoes\**" />
-    <Compile Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
     <Content Remove="Decisoes\**" />
-    <Content Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
     <EmbeddedResource Remove="Decisoes\**" />
-    <EmbeddedResource Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
     <None Remove="Decisoes\**" />
-    <None Remove="Modules\Cadastro\Modelos\CadastroDeModelos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Cadastro\Models\Modelo.cs" />
   </ItemGroup>
 
 
@@ -28,6 +30,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
 
@@ -37,6 +41,11 @@
     <ProjectReference Include="..\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Cadastro\Data\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,49 @@
+﻿@using Ateliex.Modules.Cadastro.Modelos
+
+@model ResourceCollection<ModeloResource>
+
+@{
+    ViewData["Title"] = "Modelos";
+}
+
+<h1>Modelos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Data.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Data.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Data.CustoDeProducao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Data) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data.CustoDeProducao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Data.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Data.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Data.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

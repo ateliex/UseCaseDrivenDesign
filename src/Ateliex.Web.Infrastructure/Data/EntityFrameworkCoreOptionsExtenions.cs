@@ -4,36 +4,28 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ateliex
+namespace Ateliex.Data
 {
-    public static class DbModule
+    public static class EntityFrameworkCoreOptionsExtenions
     {
-        private static IConfiguration configuration;
-
-        public static IServiceCollection AddDbServices(this IServiceCollection services, IConfiguration configuration)
+        public static DataServicesOptionsBuilder UseEntityFrameworkCore(this DataServicesOptionsBuilder optionsBuilder, IConfiguration configuration)
         {
-            DbModule.configuration = configuration;
-
-            //
-
-            services.AddDbContext<AteliexDbContext>(options =>
+            optionsBuilder.Services.AddDbContext<AteliexDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             //
 
-            services.AddTransient<IConsultaDeModelos, ModelosDbService>();
+            optionsBuilder.Services.AddTransient<IConsultaDeModelos, ModelosDbService>();
 
-            services.AddTransient<IRepositorioDeModelos, ModelosDbService>();
-
-            //
-
-            services.AddTransient<IConsultaDePlanosComerciais, PlanosComerciaisDbService>();
-
-            services.AddTransient<IRepositorioDePlanosComerciais, PlanosComerciaisDbService>();
+            optionsBuilder.Services.AddTransient<IRepositorioDeModelos, ModelosDbService>();
 
             //
 
-            return services;
+            optionsBuilder.Services.AddTransient<IConsultaDePlanosComerciais, PlanosComerciaisDbService>();
+
+            optionsBuilder.Services.AddTransient<IRepositorioDePlanosComerciais, PlanosComerciaisDbService>();
+
+            return optionsBuilder;
         }
 
         public static void EnsureDatabaseCreatedAsync(IServiceScopeFactory serviceScopeFactory)

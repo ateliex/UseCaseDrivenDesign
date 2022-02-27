@@ -1,11 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Web;
 
 namespace Ateliex
 {
+    [ApiController]
     [Route("/")]
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
+        /// <summary>
+        /// Sumário
+        /// </summary>
+        /// <returns>Retorno</returns>
+        /// <response code="200">Teste</response>
+        [HttpGet(Name = "Home")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Resource))]
         public IActionResult Index()
         {
             var resource = new Resource

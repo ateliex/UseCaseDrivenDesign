@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ateliex.Modules.Decisoes.Vendas
 {
-    [Route("api/vendas")]
-    public class VendasController : Controller
+    [ApiController]
+    [Route("/vendas")]
+    public class VendasController : ControllerBase
     {
         private readonly CalculoDeTaxaDeMarcacao calculoDeTaxaDeMarcacao;
 

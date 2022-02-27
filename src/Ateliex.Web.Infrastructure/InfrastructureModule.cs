@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Ateliex.Data;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Transactions;
 
@@ -20,11 +21,11 @@ namespace Ateliex
 
             services.AddApplicationCore(configuration);
 
-            services.AddDbServices(configuration);
-
             //
 
-            return services;
+            return services
+                .AddDataServices(options =>
+                    options.UseEntityFrameworkCore(configuration));
         }
     }
 }
