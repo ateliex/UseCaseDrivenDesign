@@ -50,23 +50,27 @@ namespace Ateliex.Hooks
             });
 
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            objectContainer.RegisterInstanceAs(httpClient);
         }
 
         [BeforeScenario]
         public void InitializeWeb(FeatureContext feature, ScenarioContext scenario)
         {
-            if (feature.FeatureInfo.Title == "Cálculo (ou Calculadora) de Taxa de Marcação")
-            {
-                var calculoDeTaxaDeMarcacaoWeb = new CalculoDeTaxaDeMarcacaoWeb(httpClient);
+            //objectContainer.RegisterInstanceAs<CalculoDeTaxaDeMarcacao>(calculoDeTaxaDeMarcacaoWeb);
 
-                objectContainer.RegisterInstanceAs<CalculoDeTaxaDeMarcacao>(calculoDeTaxaDeMarcacaoWeb);
-            }
-            else if (feature.FeatureInfo.Title == "Cadastro de Modelos")
-            {
-                var cadastroDeModelosWeb = new CadastroDeModelosWeb(httpClient);
+            //if (feature.FeatureInfo.Title == "Cálculo (ou Calculadora) de Taxa de Marcação")
+            //{
+            //    var calculoDeTaxaDeMarcacaoWeb = new CalculoDeTaxaDeMarcacaoWeb(httpClient);
 
-                objectContainer.RegisterInstanceAs<CadastroDeModelos>(cadastroDeModelosWeb);
-            }
+            //    objectContainer.RegisterInstanceAs<CalculoDeTaxaDeMarcacao>(calculoDeTaxaDeMarcacaoWeb);
+            //}
+            //else if (feature.FeatureInfo.Title == "Cadastro de Modelos")
+            //{
+            //    var cadastroDeModelosWeb = new CadastroDeModelosWeb(httpClient);
+
+            //    objectContainer.RegisterInstanceAs<CadastroDeModelos>(cadastroDeModelosWeb);
+            //}
         }
 
         [BeforeTestRun]

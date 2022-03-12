@@ -3,70 +3,46 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.DomainModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ateliex.Modules.Cadastro.Modelos
 {
-    public class CodigoDeModelo
-    {
-        public string Valor { get; }
-
-        public CodigoDeModelo(string valor)
-        {
-            Valor = valor;
-        }
-
-        public override string ToString()
-        {
-            return $"Modelo-{Valor}";
-        }
-
-        private CodigoDeModelo()
-        {
-
-        }
-    }
-
     public class Modelo : Entity
     {
-        [Description("Id")]
-        public CodigoDeModelo Id { get; internal set; }
+        #region Atributos
 
-        [Description("Código")]
-        public string Codigo { get; internal set; }
+        [DisplayName("Código")]
+        public CodigoDeModelo Codigo { get; private set; }
 
-        [Description("Nome")]
-        public string Nome { get; internal set; }
+        [DisplayName("Nome")]
+        public string Nome { get; private set; }
 
-        [Description("Custo de Produção")]
-        public decimal CustoDeProducao
-        {
-            get
-            {
-                var total = Recursos.Sum(p => p.Custo);
+        [DisplayName("Custo de Produção")]
+        public decimal CustoDeProducao { get; private set; }
 
-                return total;
-            }
-        }
-
-        [Description("Recursos")]
+        [DisplayName("Recursos")]
         public virtual ICollection<Recurso> Recursos { get; }
 
-        public Modelo(string codigo, string nome)
-        {
-            Id = new CodigoDeModelo(codigo);
+        #endregion
 
+        #region Comportamentos
+
+        internal Modelo(CodigoDeModelo codigo, string nome)
+        {
             Codigo = codigo;
 
             Nome = nome;
 
             Recursos = new HashSet<Recurso>();
 
-            //Recursos.CollectionChanged += Recursos_CollectionChanged;
+            // Infraestrutura.
+
+            CodigoDeModelo = codigo.Valor;
         }
 
         internal void AlteraCodigo(CodigoDeModelo codigo)
         {
-            Id = codigo;
+            Codigo = codigo;
         }
 
         internal void AlteraNome(string nome)
@@ -84,6 +60,8 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
             Recursos.Add(recurso);
 
+            CustoDeProducao += recurso.Custo;
+
             return recurso;
         }
 
@@ -99,23 +77,43 @@ namespace Ateliex.Modules.Cadastro.Modelos
             return recurso;
         }
 
-        //internal void Recursos_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        //{
-        //    if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
-        //    {
-        //        var recurso = e.NewItems[0] as Recurso;
+        #endregion
 
-        //        recurso.Modelo = this;
+        #region Infraestrutura
 
-        //        var total = Recursos.Count;
+        [DisplayName("Código")]
+        public string CodigoDeModelo { get; private set; }
 
-        //        //recurso.Id = total;
-        //    }
-        //}
-
-        internal Modelo()
+        private Modelo()
         {
             Recursos = new HashSet<Recurso>();
+        }
+
+        #endregion
+    }
+
+    public class CodigoDeModelo : ValueObject
+    {
+        public string Valor { get; private set; }
+
+        public CodigoDeModelo(string valor)
+        {
+            Valor = valor;
+        }
+
+        public override string ToString()
+        {
+            return $"Modelo-{Valor}";
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Valor;
+        }
+
+        private CodigoDeModelo()
+        {
+
         }
     }
 
@@ -128,43 +126,34 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
     public class Recurso : Entity
     {
-        [Description("Modelo")]
-        public virtual Modelo Modelo { get; internal set; }
+        #region Atributos
 
-        [Description("Id")]
-        public int Id { get; internal set; }
+        [DisplayName("Modelo")]
+        public virtual Modelo Modelo { get; private set; }
 
-        [Description("Tipo")]
-        public TipoDeRecurso Tipo { get; internal set; }
+        [DisplayName("Id")]
+        public int Id { get; private set; }
 
-        [Description("Descrição")]
-        public string Descricao { get; internal set; }
+        [DisplayName("Tipo")]
+        public TipoDeRecurso Tipo { get; private set; }
 
-        [Description("Custo")]
-        public decimal Custo { get; internal set; }
+        [DisplayName("Descrição")]
+        public string Descricao { get; private set; }
 
-        [Description("Unidades")]
-        public decimal Unidades { get; internal set; }
+        [DisplayName("Custo")]
+        public decimal Custo { get; private set; }
 
-        [Description("Custo por Unidade")]
-        public decimal CustoPorUnidade
-        {
-            get
-            {
-                if (Unidades == 0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    var custoPorUnidade = Custo / Unidades;
+        [DisplayName("Unidades")]
+        public decimal Unidades { get; private set; }
 
-                    return custoPorUnidade;
-                }
-            }
-        }
+        [DisplayName("Custo por Unidade")]
+        public decimal CustoPorUnidade { get; private set; }
 
-        public Recurso(Modelo modelo, int id, TipoDeRecurso tipo, string descricao, decimal custo, decimal unidades)
+        #endregion
+
+        #region Comportamentos
+
+        internal Recurso(Modelo modelo, int id, TipoDeRecurso tipo, string descricao, decimal custo, decimal unidades)
         {
             Modelo = modelo;
 
@@ -177,6 +166,14 @@ namespace Ateliex.Modules.Cadastro.Modelos
             Custo = custo;
 
             Unidades = unidades;
+
+            var custoPorUnidade = CalculaCustoPorUnidade(custo, unidades);
+
+            CustoPorUnidade = custoPorUnidade;
+
+            // Infraestrutura.
+
+            CodigoDeModelo = modelo.CodigoDeModelo;
         }
 
         internal void DefineTipo(TipoDeRecurso tipo)
@@ -192,37 +189,51 @@ namespace Ateliex.Modules.Cadastro.Modelos
         internal void DefineCusto(decimal custo)
         {
             Custo = custo;
+
+            var custoPorUnidade = CalculaCustoPorUnidade(custo, Unidades);
+
+            CustoPorUnidade = custoPorUnidade;
         }
 
         internal void DefineUnidades(decimal unidades)
         {
             Unidades = unidades;
+
+            var custoPorUnidade = CalculaCustoPorUnidade(Custo, unidades);
+
+            CustoPorUnidade = custoPorUnidade;
         }
 
-        internal Recurso()
+        private decimal CalculaCustoPorUnidade(decimal custo, decimal unidades)
         {
-            //PropertyChanged += Recurso_PropertyChanged;
+            if (unidades == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return custo / unidades;
+            }
         }
 
-        //internal static void Recurso_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
-        //    var recurso = sender as Recurso;
+        #endregion
 
-        //    if (recurso.Modelo == null) return;
-
-        //    if (e.PropertyName == nameof(CustoPorUnidade))
-        //    {
-        //        recurso.Modelo.OnPropertyChanged("CustoDeProducao");
-        //    }
-        //}
+        #region Infraestrutura
 
         [Infrastructure]
-        public string ModeloCodigo { get; internal set; }
+        public string CodigoDeModelo { get; private set; }
+
+        private Recurso()
+        {
+
+        }
+
+        #endregion
     }
 
     public interface IRepositorioDeModelos
     {
-        Modelo ObtemModelo(CodigoDeModelo codigo);
+        Task<Modelo> ObtemModelo(CodigoDeModelo codigo);
 
         void Add(Modelo modelo);
 

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using System;
+using System.Net.Http;
 using TechTalk.SpecFlow;
 
 namespace Ateliex.Modules.Decisoes.Vendas
@@ -9,15 +10,15 @@ namespace Ateliex.Modules.Decisoes.Vendas
     {
         private readonly ScenarioContext scenario;
 
-        private readonly CalculoDeTaxaDeMarcacao calculoDeTaxaDeMarcacao;
+        private readonly VendasClient vendasClient;
 
         public CalculoDeTaxaDeMarcacaoSteps(
             ScenarioContext scenario,
-            CalculoDeTaxaDeMarcacao calculoDeTaxaDeMarcacao)
+            HttpClient httpClient)
         {
             this.scenario = scenario;
 
-            this.calculoDeTaxaDeMarcacao = calculoDeTaxaDeMarcacao;
+            vendasClient = new VendasClient(httpClient);
         }
 
         [Given(@"que o custo fixo foi de (.*)%")]
@@ -47,7 +48,7 @@ namespace Ateliex.Modules.Decisoes.Vendas
 
             var ml = scenario.Get<decimal>("ml");
 
-            var tm = calculoDeTaxaDeMarcacao.CalculaTaxaDeMarcacao(cf, cv, ml);
+            var tm = vendasClient.PostSolicitacaoDeCalculoDeTaxaDeMarcacao(cf, cv, ml);
 
             scenario.Add("tm", tm);
         }

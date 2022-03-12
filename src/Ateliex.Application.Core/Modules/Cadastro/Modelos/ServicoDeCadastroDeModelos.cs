@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Transactions;
 
 namespace Ateliex.Modules.Cadastro.Modelos
@@ -22,7 +23,9 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
             try
             {
-                var modelo = new Modelo(solicitacao.Codigo, solicitacao.Nome);
+                var codigoDeModelo = new CodigoDeModelo(solicitacao.Codigo);
+
+                var modelo = new Modelo(codigoDeModelo, solicitacao.Nome);
 
                 repositorioDeModelos.Add(modelo);
 
@@ -38,7 +41,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             }
         }
 
-        public Recurso AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
+        public async Task<Recurso> AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao)
         {
             unitOfWork.BeginTransaction();
 
@@ -46,7 +49,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             {
                 var codigo = new CodigoDeModelo(solicitacao.ModeloCodigo);
 
-                var modelo = repositorioDeModelos.ObtemModelo(codigo);
+                var modelo = await repositorioDeModelos.ObtemModelo(codigo);
 
                 var recurso = modelo.AdicionaRecurso(solicitacao.Tipo, solicitacao.Descricao, solicitacao.Custo, solicitacao.Unidades);
 
