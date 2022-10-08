@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Modules\Cadastro\Modelos\CadastroDeModelosWeb.cs" />
+    <Compile Remove="Modules\Decisoes\Vendas\CalculoDeTaxaDeMarcacaoWeb.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="C:\Users\mards\.nuget\packages\microsoft.testplatform.testhost\16.5.0\build\netcoreapp2.1\x64\testhost.dll" />
     <Content Remove="C:\Users\mards\.nuget\packages\microsoft.testplatform.testhost\16.5.0\build\netcoreapp2.1\x64\testhost.exe" />
   </ItemGroup>
@@ -20,14 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
 
     
 
     
-    <PackageReference Include="SpecFlow.xUnit" Version="3.9.52" />
+    <PackageReference Include="SpecFlow.xUnit" Version="3.9.58" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
@@ -56,8 +62,6 @@
       <Aliases>domain</Aliases>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Ateliex.Web\Ateliex.Web.csproj" />
-    <ProjectReference Include="..\Ateliex.Business\Ateliex.Business.csproj" />
-    <ProjectReference Include="..\Ateliex.UseCases\Ateliex.UseCases.csproj" />
   </ItemGroup>
 
 </Project>

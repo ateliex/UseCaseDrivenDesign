@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Ateliex.Modules.Cadastro.Modelos
 {
@@ -9,7 +10,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
 
         }
 
-        public Modelo ObtemModelo(CodigoDeModelo codigo)
+        public Task<Modelo> ObtemModelo(CodigoDeModelo codigo)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ateliex.Modules.Cadastro.Modelos
 {
@@ -13,13 +14,13 @@ namespace Ateliex.Modules.Cadastro.Modelos
             this.db = db;
         }
 
-        public Modelo[] ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao)
+        public async Task<Modelo[]> ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao)
         {
             try
             {
-                var modelos = db.Modelos
+                var modelos = await db.Modelos
                     .Include(p => p.Recursos)
-                    .ToArray();
+                    .ToArrayAsync();
 
                 return modelos;
             }
@@ -49,13 +50,13 @@ namespace Ateliex.Modules.Cadastro.Modelos
             }
         }
 
-        public Modelo ObtemModelo(CodigoDeModelo codigo)
+        public async Task<Modelo> ObtemModelo(CodigoDeModelo codigo)
         {
             try
             {
-                var modelo = db.Modelos
+                var modelo = await db.Modelos
                     .Include(p => p.Recursos)
-                    .FirstOrDefault(p => p.Codigo == codigo.Valor);
+                    .FirstOrDefaultAsync(p => p.CodigoDeModelo == codigo.Valor);
 
                 if (modelo == default(Modelo))
                 {
@@ -100,7 +101,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             {
                 // TODO: Tratar erros de persistência aqui.
 
-                throw new ApplicationException($"Erro ao adicionar modelo '{modelo.Codigo}'.", ex);
+                throw new ApplicationException($"Erro ao adicionar modelo '{modelo.CodigoDeModelo}'.", ex);
             }
         }
 
@@ -130,7 +131,7 @@ namespace Ateliex.Modules.Cadastro.Modelos
             {
                 // TODO: Tratar erros de persistência aqui.
 
-                throw new ApplicationException($"Erro ao excluir modelo '{modelo.Codigo}'.", ex);
+                throw new ApplicationException($"Erro ao excluir modelo '{modelo.CodigoDeModelo}'.", ex);
             }
         }
 

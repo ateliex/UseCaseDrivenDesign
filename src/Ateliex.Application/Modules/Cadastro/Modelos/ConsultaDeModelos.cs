@@ -1,10 +1,12 @@
-﻿namespace Ateliex.Modules.Cadastro.Modelos
+﻿using System.Threading.Tasks;
+
+namespace Ateliex.Modules.Cadastro.Modelos
 {
     public interface IConsultaDeModelos
     {
-        Modelo[] ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao);
+        Task<Modelo[]> ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao);
 
-        Modelo ObtemModelo(CodigoDeModelo codigo);
+        Task<Modelo> ObtemModelo(CodigoDeModelo codigo);
     }
 
     public class SolicitacaoDeConsultaDeModelos

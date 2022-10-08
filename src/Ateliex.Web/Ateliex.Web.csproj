@@ -9,29 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Cadastro\Data\**" />
     <Compile Remove="Decisoes\**" />
+    <Content Remove="Areas\Cadastro\Data\**" />
     <Content Remove="Decisoes\**" />
+    <EmbeddedResource Remove="Areas\Cadastro\Data\**" />
     <EmbeddedResource Remove="Decisoes\**" />
+    <None Remove="Areas\Cadastro\Data\**" />
     <None Remove="Decisoes\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Cadastro\Models\Modelo.cs" />
+    <None Include="Areas\Cadastro\Views\Home\Index.cshtml" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.15.10" />
   </ItemGroup>
 
 
@@ -41,11 +45,6 @@
     <ProjectReference Include="..\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Areas\Cadastro\Data\" />
   </ItemGroup>
 
 </Project>

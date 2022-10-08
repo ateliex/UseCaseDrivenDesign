@@ -138,7 +138,7 @@ namespace Ateliex.Modules.Decisoes.Comerciais
 
         public bool ExisteItemDoModelo(Modelo modelo)
         {
-            var existe = Itens.Any(p => p.Modelo.Codigo == modelo.Codigo);
+            var existe = Itens.Any(p => p.Modelo.CodigoDeModelo == modelo.CodigoDeModelo);
 
             return existe;
         }

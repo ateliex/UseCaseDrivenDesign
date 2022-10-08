@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ateliex.Modules.Decisoes.Vendas
 {
     [ApiController]
-    [Route("/vendas")]
+    [Route("api/vendas")]
     public class VendasController : ControllerBase
     {
         private readonly CalculoDeTaxaDeMarcacao calculoDeTaxaDeMarcacao;
@@ -18,20 +18,11 @@ namespace Ateliex.Modules.Decisoes.Vendas
         }
 
         [HttpPost("calculoDeTaxaDeMarcacao")]
-        public IActionResult Post([FromBody] CalculoDeTaxaDeMarcacaoRequest request)
+        public ActionResult<decimal> PostSolicitacaoDeCalculoDeTaxaDeMarcacao(decimal cf, decimal cv, decimal ml)
         {
-            var tm = calculoDeTaxaDeMarcacao.CalculaTaxaDeMarcacao(request.CF, request.CV, request.ML);
+            var tm = calculoDeTaxaDeMarcacao.CalculaTaxaDeMarcacao(cf, cv, ml);
 
-            return Accepted(tm);
+            return tm;
         }
-    }
-
-    public class CalculoDeTaxaDeMarcacaoRequest
-    {
-        public decimal CF { get; set; }
-        
-        public decimal CV { get; set; }
-        
-        public decimal ML { get; set; }
     }
 }

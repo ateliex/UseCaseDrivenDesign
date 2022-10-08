@@ -17,14 +17,14 @@ namespace Ateliex.Modules.Cadastro.Modelos.ConsultaDeModelos
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var solicitacao = new SolicitacaoDeConsultaDeModelos
             {
 
             };
 
-            var modelos = consultaDeModelos.ConsultaModelos(solicitacao);
+            var modelos = await consultaDeModelos.ConsultaModelos(solicitacao);
 
             var list = modelos.Select(p => ItemDeConsultaDeModeloViewModel.From(p, selecteds)).ToList();
 

@@ -1,10 +1,12 @@
-﻿namespace Ateliex.Modules.Cadastro.Modelos
+﻿using System.Threading.Tasks;
+
+namespace Ateliex.Modules.Cadastro.Modelos
 {
     public interface ICadastroDeModelos
     {
         Modelo CadastraModelo(SolicitacaoDeCadastroDeModelo solicitacao);
 
-        Recurso AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao);
+        Task<Recurso> AdicionaRecursoDeModelo(SolicitacaoDeAdicaoDeRecursoDeModelo solicitacao);
 
         void RemoveRecursoDeModelo(string codigo, string descricao);
 

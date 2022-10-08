@@ -56,18 +56,28 @@ namespace Ateliex
             //services.AddRazorPages();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            
+
             services.AddEndpointsApiExplorer();
 
-            services.AddSwaggerGen(options =>
-            {
-                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            //services.AddSwaggerGen(options =>
+            //{
+            //    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
-                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-            });
+            //    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            //});
 
 
             services.AddInfrastructure(Configuration);
+
+            //services.AddOpenApiDocument();
+
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Title = "Ateliex";
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,11 +87,7 @@ namespace Ateliex
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseDatabaseErrorPage();
-
-                app.UseSwagger();
-                
-                app.UseSwaggerUI();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -90,6 +96,14 @@ namespace Ateliex
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //app.UseSwagger();
+
+            //app.UseSwaggerUI();
+
+            app.UseOpenApi();
+
+            app.UseSwaggerUi3();
 
             app.UseHttpsRedirection();
 
@@ -101,24 +115,24 @@ namespace Ateliex
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
             //app.UseEndpoints(endpoints =>
             //{
-            //    endpoints.MapControllerRoute(
-            //        name: "areas",
-            //        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-            //    );
-
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //    //endpoints.MapRazorPages();
+            //    endpoints.MapControllers();
             //});
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                //endpoints.MapRazorPages();
+            });
 
             var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 

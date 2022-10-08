@@ -1,4 +1,6 @@
-﻿namespace Ateliex.Modules.Cadastro.Modelos
+﻿using System.Threading.Tasks;
+
+namespace Ateliex.Modules.Cadastro.Modelos
 {
     public class ModelosInfraService : IConsultaDeModelos, IRepositorioDeModelos
     {
@@ -13,9 +15,9 @@
             this.http = http;
         }
 
-        public Modelo[] ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao)
+        public async Task<Modelo[]> ConsultaModelos(SolicitacaoDeConsultaDeModelos solicitacao)
         {
-            var modelos = db.ConsultaModelos(solicitacao);
+            var modelos = await db.ConsultaModelos(solicitacao);
 
             return modelos;
         }
@@ -27,9 +29,9 @@
             return modelos;
         }
 
-        public Modelo ObtemModelo(CodigoDeModelo codigo)
+        public async Task<Modelo> ObtemModelo(CodigoDeModelo codigo)
         {
-            var modelo = db.ObtemModelo(codigo);
+            var modelo = await db.ObtemModelo(codigo);
 
             return modelo;
         }
