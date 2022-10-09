@@ -1,18 +1,13 @@
-
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Ateliex</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Decisoes\**" />
-    <EmbeddedResource Remove="Decisoes\**" />
-    <None Remove="Decisoes\**" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Ateliex.AnemicDomain\Ateliex.AnemicDomain.csproj" />
     <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
   </ItemGroup>
 

@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Ateliex</RootNamespace>
+    <Configurations>Debug;Release;DebugAnemicDomain</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnemicDomain|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ANEMIC</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,10 +63,24 @@
     <ProjectReference Include="..\..\src\Ateliex.Application\Ateliex.Application.csproj">
       <Aliases>application</Aliases>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Ateliex.RichDomain\Ateliex.RichDomain.csproj">
-      <Aliases>domain</Aliases>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Ateliex.Web\Ateliex.Web.csproj" />
   </ItemGroup>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains('ANEMIC'))">
+      <ItemGroup>
+        <ProjectReference Include="..\..\src\Ateliex.AnemicDomain\Ateliex.AnemicDomain.csproj">
+          <Aliases>domain</Aliases>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <ProjectReference Include="..\..\src\Ateliex.RichDomain\Ateliex.RichDomain.csproj">
+          <Aliases>domain</Aliases>
+        </ProjectReference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 
 </Project>

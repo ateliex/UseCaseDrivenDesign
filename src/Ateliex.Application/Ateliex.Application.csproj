@@ -1,13 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Ateliex</RootNamespace>
+    <Configurations>Debug;Release;DebugAnemicDomain</Configurations>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnemicDomain|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ANEMIC</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>    
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains('ANEMIC'))">
+      <ItemGroup>
+        <ProjectReference Include="..\Ateliex.AnemicDomain\Ateliex.AnemicDomain.csproj" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <ProjectReference Include="..\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />        
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 
 </Project>
