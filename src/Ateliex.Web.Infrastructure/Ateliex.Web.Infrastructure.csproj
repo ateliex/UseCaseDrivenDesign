@@ -3,11 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Ateliex</RootNamespace>
-    <Configurations>Debug;Release;DebugAnemicDomain</Configurations>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnemicDomain|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ANEMIC</DefineConstants>
+	<Configurations>Debug;Release;DebugAnemicDomain</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,23 +13,20 @@
   <ItemGroup>    
     <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
     <ProjectReference Include="..\Ateliex.Data.SqlClient\Ateliex.Data.SqlClient.csproj" />
-    <ProjectReference Include="..\Ateliex.EntityFrameworkCore\Ateliex.EntityFrameworkCore.csproj" />    
+    <ProjectReference Include="..\Ateliex.EntityFrameworkCore\Ateliex.EntityFrameworkCore.csproj" />
+	  
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Modules\" />
-  </ItemGroup>
-
   <Choose>
-    <When Condition="$(DefineConstants.Contains('ANEMIC'))">
+    <When Condition="'$(Configuration)|$(Platform)'=='DebugAnemicDomain|AnyCPU'">
       <ItemGroup>
-        <ProjectReference Include="..\Ateliex.Application.core.WithAnemicDomain\Ateliex.Application.core.WithAnemicDomain.csproj" />
+        <ProjectReference Include="..\Ateliex.Application.Core.WithAnemicDomain\Ateliex.Application.Core.WithAnemicDomain.csproj" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <ProjectReference Include="..\Ateliex.Application.core.WithRichDomain\Ateliex.Application.core.WithRichDomain.csproj" />        
+        <ProjectReference Include="..\Ateliex.Application.Core\Ateliex.Application.Core.csproj" />        
       </ItemGroup>
     </Otherwise>
   </Choose>

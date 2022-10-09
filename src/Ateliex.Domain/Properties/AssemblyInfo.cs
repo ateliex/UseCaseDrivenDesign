@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Ateliex.Application.Core.WithRichDomain")]
+[assembly: InternalsVisibleTo("Ateliex.Application.Core")]
 [assembly: InternalsVisibleTo("Ateliex.Application.Tests")]
 [assembly: InternalsVisibleTo("Ateliex.Domain.Tests")]
 [assembly: InternalsVisibleTo("Ateliex.Data.SqlClient")]

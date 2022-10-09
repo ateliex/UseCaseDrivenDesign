@@ -6,23 +6,19 @@
     <Configurations>Debug;Release;DebugAnemicDomain</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnemicDomain|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ANEMIC</DefineConstants>
-  </PropertyGroup>
-
   <ItemGroup>    
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
 
   <Choose>
-    <When Condition="$(DefineConstants.Contains('ANEMIC'))">
+    <When Condition="'$(Configuration)|$(Platform)'=='DebugAnemicDomain|AnyCPU'">
       <ItemGroup>
         <ProjectReference Include="..\Ateliex.AnemicDomain\Ateliex.AnemicDomain.csproj" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <ProjectReference Include="..\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />        
+        <ProjectReference Include="..\Ateliex.Domain\Ateliex.Domain.csproj" />        
       </ItemGroup>
     </Otherwise>
   </Choose>
