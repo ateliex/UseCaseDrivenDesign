@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
-    <ProjectReference Include="..\Ateliex.Domain\Ateliex.Domain.csproj" />
+    <ProjectReference Include="..\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />
     <ProjectReference Include="..\Ateliex.Web.Infrastructure\Ateliex.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Microsoft.AspNetCore.Extensions\Microsoft.AspNetCore.Extensions.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />

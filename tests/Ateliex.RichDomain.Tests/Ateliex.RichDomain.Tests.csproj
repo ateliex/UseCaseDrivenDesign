@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Ateliex.Domain\Ateliex.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -58,7 +58,7 @@
     <ProjectReference Include="..\..\src\Ateliex.Application\Ateliex.Application.csproj">
       <Aliases>application</Aliases>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Ateliex.Domain\Ateliex.Domain.csproj">
+    <ProjectReference Include="..\..\src\Ateliex.RichDomain\Ateliex.RichDomain.csproj">
       <Aliases>domain</Aliases>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Ateliex.Web\Ateliex.Web.csproj" />

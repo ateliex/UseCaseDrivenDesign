@@ -10,11 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ateliex.Application.Core\Ateliex.Application.Core.csproj" />
+    <ProjectReference Include="..\Ateliex.Application.Core.WithRichDomain\Ateliex.Application.Core.WithRichDomain.csproj" />
     <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
     <ProjectReference Include="..\Ateliex.Data.SqlClient\Ateliex.Data.SqlClient.csproj" />
-    <ProjectReference Include="..\Ateliex.Domain\Ateliex.Domain.csproj" />
     <ProjectReference Include="..\Ateliex.EntityFrameworkCore\Ateliex.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
   </ItemGroup>
 

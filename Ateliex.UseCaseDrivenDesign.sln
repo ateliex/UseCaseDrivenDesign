@@ -22,9 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Extensions", "src\Sy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application", "src\Ateliex.Application\Ateliex.Application.csproj", "{2ECB3ED8-E84A-4D77-9E2D-E5F09FB7714F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application.Core", "src\Ateliex.Application.Core\Ateliex.Application.Core.csproj", "{E8E37B2E-609A-4750-930D-3020B1F8E343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Application.Core.WithRichDomain", "src\Ateliex.Application.Core.WithRichDomain\Ateliex.Application.Core.WithRichDomain.csproj", "{E8E37B2E-609A-4750-930D-3020B1F8E343}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Domain", "src\Ateliex.Domain\Ateliex.Domain.csproj", "{6C891D7C-F087-4EAB-A466-E4764A6419D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.RichDomain", "src\Ateliex.RichDomain\Ateliex.RichDomain.csproj", "{6C891D7C-F087-4EAB-A466-E4764A6419D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Services", "Data Services", "{00ED9475-BD87-4B78-B26E-B1DC855DE5D6}"
 EndProject
@@ -44,7 +44,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Extens
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Especificação", "0 - Especificação", "{BE3BC919-D2FF-4A2A-8389-6B82047C618E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Domain.Tests", "tests\Ateliex.Domain.Tests\Ateliex.Domain.Tests.csproj", "{848F4990-A9A8-4F33-BCC3-D4F4CF2D0DDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.RichDomain.Tests", "tests\Ateliex.RichDomain.Tests\Ateliex.RichDomain.Tests.csproj", "{848F4990-A9A8-4F33-BCC3-D4F4CF2D0DDE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ateliex.Specs", "specs\Ateliex.Specs\Ateliex.Specs.csproj", "{1E589C6B-198E-482D-8C4D-316849832419}"
 EndProject

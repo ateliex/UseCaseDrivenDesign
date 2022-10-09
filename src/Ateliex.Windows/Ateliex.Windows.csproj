@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ateliex.Application\Ateliex.Application.csproj" />
-    <ProjectReference Include="..\Ateliex.Domain\Ateliex.Domain.csproj" />
+    <ProjectReference Include="..\Ateliex.RichDomain\Ateliex.RichDomain.csproj" />
     <ProjectReference Include="..\Ateliex.Windows.Infrastructure\Ateliex.Windows.Infrastructure.csproj" />
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj" />
     <ProjectReference Include="..\System.Xaml.Extensions\System.Xaml.Extensions.csproj" />
